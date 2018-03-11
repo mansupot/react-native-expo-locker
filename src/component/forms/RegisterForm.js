@@ -40,6 +40,7 @@ export default class RegisterForm extends Component {
         })
     }
     onSubmit() {
+        
         const { emailReg ,rePasswordReg } = this.state;
         //Register Firebase
         if(this.state.emailReg != '' && this.state.passwordReg != '' && this.state.rePasswordReg != '' ){
@@ -48,7 +49,8 @@ export default class RegisterForm extends Component {
                 this.setState({ errorsReg: '' }); 
 
                 //Write data Firebase
-                Firebase.database().ref('UserInfo/' + this.state.countUser).set({
+                userId = Firebase.auth().currentUser.uid;
+                Firebase.database().ref('UserInfo/' + userId).set({
                     name : this.state.nameReg,
                     email : this.state.emailReg ,
                     password : this.state.rePasswordReg,

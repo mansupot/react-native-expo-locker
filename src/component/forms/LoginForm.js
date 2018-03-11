@@ -15,7 +15,7 @@ class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 'mansupot@hotmail.com' ,
+            email: 'admin@hotmail.com' ,
             password: '12345678',
             errors: {
                 email: '',
@@ -37,7 +37,7 @@ class LoginForm extends Component {
         Firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => { 
                 this.setState({ error: ''}); 
-                Actions.tabbar();
+                Actions.reset("tabbar");
             })
             .catch(() => {
                 alert("Email or Password are invalid. \n Please re-enter");
