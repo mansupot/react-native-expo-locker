@@ -27,21 +27,23 @@ class ProfileForm extends Component {
                     <Text style={styles.title}>
                         My Profile
                     </Text>
-                    <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
-                        {this.state.name}
-                    </Text>
-                    <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
-                        {this.state.email}
-                    </Text>
-                    <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
-                        {this.state.tel}
-                    </Text>
+                    <View>
+                        <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                            Name : {this.state.name}
+                        </Text>
+                        <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                            Email : {this.state.email}
+                        </Text>
+                        <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                            Tel. : {this.state.tel}
+                        </Text>
+                    </View>
                     <TouchableOpacity
-                    style = {styles.button}
-                    //onPress={()=>}
-                >
-                     <Text style={styles.buttonText}>Logout</Text>  
-                </TouchableOpacity>
+                        style = {styles.button}
+                        //onPress={()=>}
+                    >
+                        <Text style={styles.buttonText}>Logout</Text>  
+                    </TouchableOpacity>
                 </View>
             </View>
         );
