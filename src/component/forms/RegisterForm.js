@@ -15,11 +15,11 @@ export default class RegisterForm extends Component {
         super(props);
         this.numberUser = Firebase.database().ref().child('NumberUser');
         this.state = {
-            emailReg : 'admin@hotmail.com',
-            passwordReg : '12345678',
-            rePasswordReg : '12345678',
-            nameReg : 'admin',
-            telReg : '0845747541',
+            emailReg : '',
+            passwordReg : '',
+            rePasswordReg : '',
+            nameReg : '',
+            telReg : '',
             errorsReg : {
                 emailReg : '',
                 passwordReg : '',
@@ -111,7 +111,7 @@ export default class RegisterForm extends Component {
             <View style={styles.container}>
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
-                        ROCK-IT-LOCKER
+                        ROCK-IT LOCKER
                     </Text>
                     <Text style={{marginVertical : 15, color:'#778899'}}>
                         Register account by Firebase
@@ -120,14 +120,14 @@ export default class RegisterForm extends Component {
     {/* Name */}
                 <TextInput
                     style={styles.textInput}
-                    placeholder='Name'
+                    placeholder='Full name'
                     onChangeText={(nameReg) => this.setState({nameReg})}
                 />
                 <Text style={styles.alertText}>{}</Text>
     {/* Email */}
                 <TextInput
                     style={styles.textInput}
-                    placeholder='Email'
+                    placeholder='Email (your.email@example.com)'
                     onChangeText={(emailReg) => this.setState({emailReg: emailReg.toLowerCase()})}
                     value={this.state.emailReg}
                     onBlur = {this.checkEmailReg}
@@ -136,7 +136,7 @@ export default class RegisterForm extends Component {
     {/* Password */}
                 <TextInput
                     style={styles.textInput}
-                    placeholder='Password'
+                    placeholder='Password (more 8 charactor)'
                     secureTextEntry
                     onChangeText={(passwordReg) => this.setState({passwordReg})}
                     value={this.state.passwordReg}
@@ -147,7 +147,7 @@ export default class RegisterForm extends Component {
     {/* Re-Password */}
                 <TextInput
                     style={styles.textInput}
-                    placeholder='Re-Password'
+                    placeholder='Re-Password (more 8 charactor)'
                     secureTextEntry
                     onChangeText={(rePasswordReg) => this.setState({rePasswordReg})}
                     value={this.state.rePasswordReg}

@@ -109,7 +109,7 @@ export default ProfileForm;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop : 25,
+        marginTop : 20,
         backgroundColor : '#455a64' ,
         //justifyContent : 'center', 
         alignItems : 'center',

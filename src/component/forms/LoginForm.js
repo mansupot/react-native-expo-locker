@@ -67,7 +67,7 @@ class LoginForm extends Component {
             <View style={styles.container}>
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
-                        ROCK-IT-LOCKER
+                        ROCK-IT LOCKER
                     </Text>
                     <Text style={{marginVertical : 15, color:'#778899'}}>
                         Welcome to application by TCT (KMUTNB)
