@@ -8,18 +8,40 @@ import {
     } from 'react-native';
 
 
+
+
 class ProfileForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name : 'Supot Patsaithong',
+            email : 'mansupot@hotmail.com',
+            tel : '0864710472',
+        }
+    };
 
     render() {
         return(
             <View style={styles.container}>
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
-                        ROCK-IT-LOCKER
+                        My Profile
                     </Text>
-                    <Text style={{marginVertical : 15, color:'#778899'}}>
-                        ProfileForm
+                    <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                        {this.state.name}
                     </Text>
+                    <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                        {this.state.email}
+                    </Text>
+                    <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                        {this.state.tel}
+                    </Text>
+                    <TouchableOpacity
+                    style = {styles.button}
+                    //onPress={()=>}
+                >
+                     <Text style={styles.buttonText}>Logout</Text>  
+                </TouchableOpacity>
                 </View>
             </View>
         );
@@ -29,9 +51,9 @@ export default ProfileForm;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop : 20,
+        marginTop : 25,
         backgroundColor : '#455a64' ,
-        justifyContent : 'center', 
+        //justifyContent : 'center', 
         alignItems : 'center',
         flex : 1,
     },
@@ -39,6 +61,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         //fontWeight: 'bold',
         color : '#F5FFFA',
+        marginVertical : 20
     },
     textInput: {
         height : 42 ,

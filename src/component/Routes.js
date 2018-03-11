@@ -14,6 +14,8 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';   
 import ProfilePage from './pages/ProfilePage'
 import ContactPage from './pages/ContactPage';
+import SteamPage from './pages/SteamPage';
+
 
 class TabIcon extends Component {
     render() {
@@ -57,17 +59,24 @@ class Routes extends Component {
                         />
                         <Scene key="tab2" 
                             hideNavBar={true} 
+                            component={ SteamPage } 
+                            title="Steam"
+                            iconName="camera"
+                            icon={TabIcon} 
+                        />
+                        <Scene key="tab3" 
+                            hideNavBar={true} 
                             component={ ProfilePage }  
                             title="Profile" 
                             iconName="user-circle"
                             icon={TabIcon}
                         />
-                        <Scene key="tab3" 
+                        <Scene key="tab4" 
                             hideNavBar={true} 
                             component={ ContactPage } 
                             title="Contact"
                             iconName="at"
-                            icon={TabIcon} 
+                            icon={TabIcon}
                         />
                     </Scene>
                 </Stack>

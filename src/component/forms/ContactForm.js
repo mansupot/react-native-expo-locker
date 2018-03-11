@@ -8,7 +8,7 @@ import {
     } from 'react-native';
 
 
-class ContactForm extends Component {
+class ProfileForm extends Component {
 
     render() {
         return(
@@ -25,7 +25,7 @@ class ContactForm extends Component {
         );
     }
 }
-export default ContactForm;
+export default ProfileForm;
 
 const styles = StyleSheet.create({
     container: {
