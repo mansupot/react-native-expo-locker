@@ -12,9 +12,7 @@ class SelectLocker extends Component {
         super(props);
         this.lockerStatusNo1 = Firebase.database().ref().child('LockerStatus');
         this.state = {
-            nameButton : 'Open',
             stateNo1 : 0,
-            sendState : '0'
         }
         
         this.updateStateToFirebase = this.updateStateToFirebase.bind(this);
@@ -42,7 +40,7 @@ class SelectLocker extends Component {
         return(
             <View style={styles.container}>
                 <Text style={styles.title}>
-                    Choose a Locker for you.
+                    My Locker
                 </Text>
     {/* Locker1*/}
                 <Text style={styles.locker}>
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
         justifyContent : 'center'
     },
     title: {
-        fontSize: 24,
+        fontSize: 28,
         marginBottom : 50,
         //fontWeight: 'bold',
         color : '#F5FFFA',

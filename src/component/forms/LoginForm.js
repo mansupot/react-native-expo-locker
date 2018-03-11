@@ -9,6 +9,7 @@ import {
 import Validator from 'validator';
 import { Actions } from 'react-native-router-flux';
 import Firebase from 'firebase';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 
 class LoginForm extends Component {
@@ -94,13 +95,13 @@ class LoginForm extends Component {
                     onKeyPress={this.checkPassword}
                 />
                 <Text style={styles.alertText}>{this.state.errors.password}</Text>
+                
                 <TouchableOpacity
                     style={styles.button}
                     onPress={this.onSubmit}
                 >
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-
                 <View style={{alignItems : 'center'}}>
                     <Text style={{color:'#778899',marginVertical : 15}}>
                         Don't have an account yet?
@@ -111,6 +112,7 @@ class LoginForm extends Component {
                         <Text style={{color:'#FFFFFF'}}>
                             Register
                         </Text>
+                        <Spinner visible={this.state.visible} textContent={"Loading..."} textStyle={{color: '#FFF'}} />
                     </TouchableOpacity>
                 </View>
             </View>

@@ -5,9 +5,12 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
+    Image,
+    Alert,
     } from 'react-native';
 import Firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
+import { Divider }from 'react-native-elements';
 
 
 class ProfileForm extends Component {
@@ -49,8 +52,17 @@ class ProfileForm extends Component {
     logOutAuth(){
         Firebase.auth().signOut()
         .then(() => {
-            alert("Log out success !");
-            Actions.reset("login" );
+            //alert("Log out success !");
+            Alert.alert(
+                'Are you sure ?',
+                'You want to log out on this time ?',
+                [
+                    {text: 'OK', onPress: () => Actions.reset("login" )},
+                    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                ],
+                { cancelable: false }
+              )
+            //Actions.reset("login" );
         })
         .catch(() => {
             alert("Can't log out on this time.");
@@ -64,22 +76,29 @@ class ProfileForm extends Component {
                     <Text style={styles.title}>
                         My Profile
                     </Text>
+                    <Image
+                        style= {{width: 100, height : 100 }}
+                        source={require('../../images/profile.png')}
+                    />
                     <View>
-                        <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
                             Name : {this.state.name}
                         </Text>
-                        <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                        <Divider style={{ backgroundColor: '#778899' }} />
+                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
                             Email : {this.state.email}
                         </Text>
-                        <Text style={{marginVertical : 12, color:'#778899',fontSize : 20}}>
+                        <Divider style={{ backgroundColor: '#778899' }} />
+                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
                             Tel. : {this.state.tel}
                         </Text>
+                        
                     </View>
                     <TouchableOpacity
                         style = {styles.button}
                         onPress={()=> this.logOutAuth()}
                     >
-                        <Text style={styles.buttonText}>Logout</Text>  
+                        <Text style={styles.buttonText}>Log out</Text>  
                     </TouchableOpacity>
                 </View>
             </View>
@@ -114,7 +133,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize : 22,
         fontWeight : '500',
-        color : 'white',
+        color : 'red',
         padding : 10,
     },
     button: {
