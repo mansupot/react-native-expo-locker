@@ -5,14 +5,16 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
+    StatusBar
     } from 'react-native';
 
 
-class ProfileForm extends Component {
+class SteamForm extends Component {
 
     render() {
         return(
             <View style={styles.container}>
+                {/* <StatusBar hidden /> */}
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
                         ROCK-IT-LOCKER
@@ -25,7 +27,7 @@ class ProfileForm extends Component {
         );
     }
 }
-export default ProfileForm;
+export default SteamForm;
 
 const styles = StyleSheet.create({
     container: {

@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
+    StatusBar
     } from 'react-native';
 
 
@@ -13,6 +14,7 @@ class SteamForm extends Component {
     render() {
         return(
             <View style={styles.container}>
+                {/* <StatusBar hidden /> */}
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
                         ROCK-IT-LOCKER

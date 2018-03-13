@@ -7,6 +7,7 @@ import {
     TextInput,
     Image,
     Alert,
+    StatusBar,
     } from 'react-native';
 import Firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
@@ -72,6 +73,7 @@ class ProfileForm extends Component {
     render() {
         return(
             <View style={styles.container}>
+                {/* <StatusBar hidden /> */}
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
                         My Profile

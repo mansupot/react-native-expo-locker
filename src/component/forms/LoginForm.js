@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
+    StatusBar
     } from 'react-native';
 import Validator from 'validator';
 import { Actions } from 'react-native-router-flux';
@@ -65,6 +66,7 @@ class LoginForm extends Component {
     render() {
         return(
             <View style={styles.container}>
+                {/* <StatusBar hidden /> */}
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
                         ROCK-IT LOCKER

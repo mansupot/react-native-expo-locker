@@ -4,8 +4,10 @@ import {
     View,
     StyleSheet,
     TouchableOpacity,
+    StatusBar,
 } from 'react-native';
 import Firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 
 class SelectLocker extends Component {
     constructor(props) {
@@ -35,10 +37,15 @@ class SelectLocker extends Component {
         });
     }
 
+    gotoQRPage(){
+        Actions.qrscan();
+    }
+    
     render() {
         console.log(this.state);
         return(
             <View style={styles.container}>
+                {/* <StatusBar hidden /> */}
                 <Text style={styles.title}>
                     My Locker
                 </Text>
@@ -58,9 +65,9 @@ class SelectLocker extends Component {
                 </Text>
                 <TouchableOpacity
                     style = {styles.button}
-                    //onPress={()=>}
+                    onPress={()=> this.gotoQRPage()}
                 >
-                     <Text style={styles.buttonText}>Close</Text>  
+                     <Text style={styles.buttonText}>+</Text>  
                 </TouchableOpacity>
             </View>
             
