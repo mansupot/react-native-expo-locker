@@ -53,7 +53,6 @@ class ProfileForm extends Component {
     logOutAuth(){
         Firebase.auth().signOut()
         .then(() => {
-            //alert("Log out success !");
             Alert.alert(
                 'Are you sure ?',
                 'You want to log out on this time ?',
@@ -63,7 +62,6 @@ class ProfileForm extends Component {
                 ],
                 { cancelable: false }
               )
-            //Actions.reset("login" );
         })
         .catch(() => {
             alert("Can't log out on this time.");

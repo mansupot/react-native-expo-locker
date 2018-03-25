@@ -56,6 +56,8 @@ export default class RegisterForm extends Component {
                     email : this.state.emailReg ,
                     password : this.state.rePasswordReg,
                     tel : this.state.telReg,
+                    booking_locker1: 'No_Booking',
+                    booking_locker2: 'No_Booking',
                 }); 
 
                 //Update count User

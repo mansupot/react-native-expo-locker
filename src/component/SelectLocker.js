@@ -56,6 +56,7 @@ class SelectLocker extends Component {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => this.updateStateToFirebase()}
+                    //disabled  = 'true'
                 >
                      <Text style={styles.buttonText}>{this.state.stateNo1 == 1 ? 'Open' : 'Close'}</Text>  
                 </TouchableOpacity>

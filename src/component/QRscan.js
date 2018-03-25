@@ -5,63 +5,170 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
-    StatusBar
+    StatusBar,
+    Alert,
     } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 import { Actions } from 'react-native-router-flux';
+import Firebase from 'firebase';
 
 export default class BarcodeScannerExample extends React.Component {
-        state = {
+    constructor(props) {
+        super(props);
+        userId = Firebase.auth().currentUser.uid;
+        this.QRlocker1 = Firebase.database().ref().child('QRLocker/Locker_No1');
+        this.QRlocker2 = Firebase.database().ref().child('QRLocker/Locker_No2');
+        this.QRlocker3 = Firebase.database().ref().child('QRLocker/Locker_No3');
+        this.state = {
+            QRlockerNo1 : null,
+            QRlockerNo2 : null,
+            QRlockerNo3 : null,
             hasCameraPermission: null,
-            statusbar : 'Please Scan QR code'
-        }
-      
-        async componentWillMount() {
-            const { status } = await Permissions.askAsync(Permissions.CAMERA);
-            this.setState({hasCameraPermission: status === 'granted'});
-        }
-        after_scanned() {
-            alert('Scanned');
-        }
-      
-        render() {
-            const { hasCameraPermission } = this.state;
-        
-            if (hasCameraPermission === null) {
-                return <Text style={styles.container}>Requesting for camera permission</Text>;
-            } else if (hasCameraPermission === false) {
-                return <Text style={styles.container}>No access to camera</Text>;
-            } else {
-                return (
-                <View style={styles.container}>
-                    {/* <StatusBar hidden/> */}
-                    <Text style={styles.title}>Scan QR Code</Text>
-                    <BarCodeScanner
-                        onBarCodeRead={this._handleBarCodeRead}
-                        type={'back'}
-                        style={{width : '90%' , height : '60%'}}
-                    />
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => this.after_scanned()}
-                    >
-                        <Text style={styles.buttonText}>{this.state.statusbar}</Text>   
-                    </TouchableOpacity>
+            statusbar : 'Please Scan QR code',
+        };
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.after_scanned = this.after_scanned.bind(this);
+        this.booking_locker = this.booking_locker.bind(this);
+    };
 
-                    <TouchableOpacity
-                        onPress={() => Actions.pop()}
-                    >
-                        <Text style={styles.title}>Cancel</Text>
-                    </TouchableOpacity>
-                </View>
-                );
+    componentDidMount(){
+        this.QRlocker1.on('value',snap =>{
+            this.setState({
+                QRlockerNo1 : snap.val()
+            });
+        });
+        this.QRlocker2.on('value',snap =>{
+            this.setState({
+                QRlockerNo2 : snap.val()
+            });
+        });
+        this.QRlocker3.on('value',snap =>{
+            this.setState({
+                QRlockerNo3 : snap.val()
+            });
+        });
+    }
+
+    state = {
+        
+    }
+    
+    async componentWillMount() {
+        const { status } = await Permissions.askAsync(Permissions.CAMERA);
+        this.setState({hasCameraPermission: status === 'granted'});
+    }
+    after_scanned() {
+        if(this.state.statusbar != 'Please Scan QR code'){
+            if(this.state.statusbar == this.state.QRlockerNo1) {
+                Alert.alert(
+                    'Are you sure ?',
+                    'You want to booking "' + this.state.QRlockerNo1 + ' " ?',
+                    [
+                        {text: 'OK', onPress: ()=> this.booking_locker()},
+                        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    ],
+                    { cancelable: false }
+                )
+            }
+            else if(this.state.statusbar == this.state.QRlockerNo2) {
+                Alert.alert(
+                    'Are you sure ?',
+                    'You want to booking "' + this.state.QRlockerNo2 + ' " ?',
+                    [
+                        {text: 'OK', onPress: () => this.booking_locker()},
+                        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    ],
+                    { cancelable: false }
+                )
+            }
+            else if(this.state.statusbar == this.state.QRlockerNo3) {
+                Alert.alert(
+                    'Are you sure ?',
+                    'You want to booking "' + this.state.QRlockerNo3 + ' " ?',
+                    [
+                        {text: 'OK', onPress: () => this.booking_locker()},
+                        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    ],
+                    { cancelable: false }
+                )
+            }
+            else {
+                alert('QR code does not match database in system or have used this service.');
             }
         }
-      
-        _handleBarCodeRead = ({ type, data }) => {
-            this.setState({ statusbar: data })
-            
+        else {
+            alert('You have not scanned the QR Code.');
         }
+        
+    }
+
+    booking_locker() {
+        if(this.state.statusbar == this.state.QRlockerNo1) {
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker1 : 'LOCKER_NO1',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No1 : 'Booked',
+            });
+        }
+        else if(this.state.statusbar == this.state.QRlockerNo2) {
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker1 : 'LOCKER_NO2',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No2 : 'Booked',
+            });
+        }
+        else if(this.state.statusbar == this.state.QRlockerNo3) {
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker1 : 'LOCKER_NO3',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No3 : 'Booked',
+            });
+        }
+        Actions.reset("tabbar");
+    }
+    
+    render() {
+        const { hasCameraPermission } = this.state;
+    
+        if (hasCameraPermission === null) {
+            return <Text style={styles.container}>Requesting for camera permission</Text>;
+        } else if (hasCameraPermission === false) {
+            return <Text style={styles.container}>No access to camera</Text>;
+        } else {
+            return (
+            <View style={styles.container}>
+                {/* <StatusBar hidden/> */}
+                <Text style={styles.title}>Scan QR Code</Text>
+                <BarCodeScanner
+                    onBarCodeRead={this._handleBarCodeRead}
+                    type={'back'}
+                    style={{width : '90%' , height : '60%'}}
+                />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => this.after_scanned()}
+                >
+                    <Text style={styles.buttonText}>{this.state.statusbar}</Text>   
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => Actions.pop()}
+                >
+                    <Text style={styles.title}>Cancel</Text>
+                </TouchableOpacity>
+            </View>
+            );
+        }
+    }
+    
+    _handleBarCodeRead = ({ type, data }) => {
+        this.setState({ statusbar: data })
+        
+        
+    }
 } 
 
 const styles = StyleSheet.create({

@@ -3,13 +3,13 @@
    "name": "ROCK-IT",
    "icon": "./path/icon/app-icon.png",
    "version": "1.0.0",
-   "slug": "your-app-slug",
+   "slug": "MrSupotTH",
    "sdkVersion": "25.0.0",
    "ios": {
      "bundleIdentifier": "com.yourcompany.yourappname"
    },
    "android": {
-     "package": "man.supot.patsaithong"
+     "package": "man1.supot.patsaithong"
    }
   }
 }
