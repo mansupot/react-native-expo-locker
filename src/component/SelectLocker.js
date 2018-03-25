@@ -13,22 +13,37 @@ class SelectLocker extends Component {
     constructor(props) {
         super(props);
         this.lockerStatusNo1 = Firebase.database().ref().child('LockerStatus');
+        userId = Firebase.auth().currentUser.uid;
+        this.booking_locker1 = Firebase.database().ref().child('UserInfo/'+userId+'/booking_locker1');
+        this.booking_locker2 = Firebase.database().ref().child('UserInfo/'+userId+'/booking_locker2');
         this.state = {
+            booking_lockerNo1 : null,
+            booking_lockerNo2 : null,
             stateNo1 : 0,
         }
-        
         this.updateStateToFirebase = this.updateStateToFirebase.bind(this);
+        this.componentDidMount = this.componentDidMount.bind(this);
     };
     
     componentDidMount(){
+        this.booking_locker1.on('value',snap => {
+            this.setState({ 
+                booking_lockerNo1 : snap.val()
+            });
+        });
+        this.booking_locker2.on('value',snap => {
+            this.setState({ 
+                booking_lockerNo2 : snap.val()
+            });
+        });
         this.lockerStatusNo1.on('value',snap => {
             this.setState({ 
                 stateNo1 : snap.val()
             });
         });
-        
-    }
 
+        alert(this.state.booking_lockerNo1);
+    }
 
     updateStateToFirebase()
     {

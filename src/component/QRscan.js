@@ -48,10 +48,6 @@ export default class BarcodeScannerExample extends React.Component {
             });
         });
     }
-
-    state = {
-        
-    }
     
     async componentWillMount() {
         const { status } = await Permissions.askAsync(Permissions.CAMERA);
