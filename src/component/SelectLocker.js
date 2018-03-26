@@ -55,6 +55,9 @@ class SelectLocker extends Component {
     gotoQRPage(){
         Actions.qrscan();
     }
+    gotoQRPage2(){
+        Actions.qrscan2();
+    }
     
     render() {
         console.log(this.state);
@@ -70,7 +73,8 @@ class SelectLocker extends Component {
                 </Text>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => this.updateStateToFirebase()}
+                    //onPress={() => this.updateStateToFirebase()}
+                    onPress={() => this.gotoQRPage()}
                     //disabled  = 'true'
                 >
                      <Text style={styles.buttonText}>{this.state.stateNo1 == 1 ? 'Open' : 'Close'}</Text>  
@@ -81,7 +85,7 @@ class SelectLocker extends Component {
                 </Text>
                 <TouchableOpacity
                     style = {styles.button}
-                    onPress={()=> this.gotoQRPage()}
+                    onPress={()=> this.gotoQRPage2()}
                 >
                      <Text style={styles.buttonText}>+</Text>  
                 </TouchableOpacity>

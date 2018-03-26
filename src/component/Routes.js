@@ -16,6 +16,7 @@ import ProfilePage from './pages/ProfilePage'
 import ContactPage from './pages/ContactPage';
 import SteamPage from './pages/SteamPage';
 import QRscanPage from './pages/QRscanPage';
+import QRscan2Page from './pages/QRscan2Page'
 
 class TabIcon extends Component {
     render() {
@@ -52,6 +53,12 @@ class Routes extends Component {
                         key="qrscan" 
                         component={ QRscanPage } 
                         title="QR Scanner"
+                        hideNavBar={ true }  
+                    />
+                    <Scene 
+                        key="qrscan2" 
+                        component={ QRscan2Page } 
+                        title="QR Scanner2"
                         hideNavBar={ true }  
                     />
                     <Scene key="tabbar" tabs={true} hideNavBar={true} >

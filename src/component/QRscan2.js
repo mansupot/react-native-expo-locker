@@ -101,7 +101,7 @@ export default class BarcodeScannerExample extends React.Component {
     booking_locker() {
         if(this.state.statusbar == this.state.QRlockerNo1) {
             Firebase.database().ref('UserInfo/'+userId).update({
-                booking_locker1 : 'LOCKER_NO1',
+                booking_locker2 : 'LOCKER_NO1',
             });
             Firebase.database().ref('QRLocker').update({
                 Locker_No1 : 'Booked',
@@ -109,7 +109,7 @@ export default class BarcodeScannerExample extends React.Component {
         }
         else if(this.state.statusbar == this.state.QRlockerNo2) {
             Firebase.database().ref('UserInfo/'+userId).update({
-                booking_locker1 : 'LOCKER_NO2',
+                booking_locker2 : 'LOCKER_NO2',
             });
             Firebase.database().ref('QRLocker').update({
                 Locker_No2 : 'Booked',
@@ -117,7 +117,7 @@ export default class BarcodeScannerExample extends React.Component {
         }
         else if(this.state.statusbar == this.state.QRlockerNo3) {
             Firebase.database().ref('UserInfo/'+userId).update({
-                booking_locker1 : 'LOCKER_NO3',
+                booking_locker2 : 'LOCKER_NO3',
             });
             Firebase.database().ref('QRLocker').update({
                 Locker_No3 : 'Booked',
@@ -137,7 +137,7 @@ export default class BarcodeScannerExample extends React.Component {
             return (
             <View style={styles.container}>
                 {/* <StatusBar hidden/> */}
-                <Text style={styles.title}>Scan QR Code1</Text>
+                <Text style={styles.title}>Scan QR Code 2</Text>
                 <BarCodeScanner
                     onBarCodeRead={this._handleBarCodeRead}
                     type={'back'}
