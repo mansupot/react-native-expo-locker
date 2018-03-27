@@ -93,7 +93,7 @@ class SelectLocker extends Component {
     }
     
     updateState(){
-        
+        alert('OK');
     }
     render() {
         if(this.state.booking_lockerNo1 === null){
