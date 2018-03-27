@@ -5545,6 +5545,16 @@ react-native-scripts@1.11.1:
     rimraf "^2.6.1"
     xdl "48.0.2"
 
+react-native-smart-loading-spinner-overlay@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-smart-loading-spinner-overlay/-/react-native-smart-loading-spinner-overlay-1.0.2.tgz#6640c0bcbf1a8fb22697fd2704169005add4ecd9"
+  dependencies:
+    react-native-smart-timer-enhance "^1.0.2"
+
+react-native-smart-timer-enhance@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-smart-timer-enhance/-/react-native-smart-timer-enhance-1.0.3.tgz#47ddc19be5a6c19184449039495f25546bcd94fe"
+
 "react-native-svg@https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz":
   version "5.5.1"
   resolved "https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz#0c6e373dbe63cfcbdd465f5b2965ebe011c8962f"

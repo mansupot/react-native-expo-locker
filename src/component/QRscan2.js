@@ -125,7 +125,7 @@ export default class BarcodeScannerExample extends React.Component {
         }
         Actions.reset("tabbar");
     }
-    
+
     render() {
         const { hasCameraPermission } = this.state;
     
