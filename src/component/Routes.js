@@ -72,25 +72,26 @@ class Routes extends Component {
                         />
                         <Scene key="tab2" 
                             hideNavBar={true} 
+                            component={ ContactPage } 
+                            title="Booking"
+                            iconName="at"
+                            icon={TabIcon}
+                        />
+                        <Scene key="tab3" 
+                            hideNavBar={true} 
                             component={ SteamPage } 
                             title="Steam"
                             iconName="camera"
                             icon={TabIcon} 
                         />
-                        <Scene key="tab3" 
+                        <Scene key="tab4" 
                             hideNavBar={true} 
                             component={ ProfilePage }  
                             title="Profile" 
                             iconName="user-circle"
                             icon={TabIcon}
                         />
-                        <Scene key="tab4" 
-                            hideNavBar={true} 
-                            component={ ContactPage } 
-                            title="Booking"
-                            iconName="at"
-                            icon={TabIcon}
-                        />
+                        
                     </Scene>
                 </Stack>
             </Router>

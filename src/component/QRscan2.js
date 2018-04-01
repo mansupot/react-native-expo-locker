@@ -19,10 +19,14 @@ export default class BarcodeScannerExample extends React.Component {
         this.QRlocker1 = Firebase.database().ref().child('QRLocker/Locker_No1');
         this.QRlocker2 = Firebase.database().ref().child('QRLocker/Locker_No2');
         this.QRlocker3 = Firebase.database().ref().child('QRLocker/Locker_No3');
+        this.QRlocker4 = Firebase.database().ref().child('QRLocker/Locker_No4');
+        this.QRlocker5 = Firebase.database().ref().child('QRLocker/Locker_No5');
         this.state = {
             QRlockerNo1 : null,
             QRlockerNo2 : null,
             QRlockerNo3 : null,
+            QRlockerNo4 : null,
+            QRlockerNo5 : null,
             hasCameraPermission: null,
             statusbar : 'Please Scan QR code',
         };
@@ -45,6 +49,16 @@ export default class BarcodeScannerExample extends React.Component {
         this.QRlocker3.on('value',snap =>{
             this.setState({
                 QRlockerNo3 : snap.val()
+            });
+        });
+        this.QRlocker4.on('value',snap =>{
+            this.setState({
+                QRlockerNo4 : snap.val()
+            });
+        });
+        this.QRlocker5.on('value',snap =>{
+            this.setState({
+                QRlockerNo5 : snap.val()
             });
         });
     }
@@ -88,6 +102,28 @@ export default class BarcodeScannerExample extends React.Component {
                     { cancelable: false }
                 )
             }
+            else if(this.state.statusbar == this.state.QRlockerNo4) {
+                Alert.alert(
+                    'Are you sure ?',
+                    'You want to booking "' + this.state.QRlockerNo4 + ' " ?',
+                    [
+                        {text: 'OK', onPress: () => this.booking_locker()},
+                        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    ],
+                    { cancelable: false }
+                )
+            }
+            else if(this.state.statusbar == this.state.QRlockerNo5) {
+                Alert.alert(
+                    'Are you sure ?',
+                    'You want to booking "' + this.state.QRlockerNo5 + ' " ?',
+                    [
+                        {text: 'OK', onPress: () => this.booking_locker()},
+                        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    ],
+                    { cancelable: false }
+                )
+            }
             else {
                 alert('QR code does not match database in system or have used this service.');
             }
@@ -123,6 +159,23 @@ export default class BarcodeScannerExample extends React.Component {
                 Locker_No3 : 'Booked',
             });
         }
+        else if(this.state.statusbar == this.state.QRlockerNo4) {
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker2 : 'LOCKER_NO4',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No4 : 'Booked',
+            });
+        }
+        else if(this.state.statusbar == this.state.QRlockerNo5) {
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker2 : 'LOCKER_NO5',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No5 : 'Booked',
+            });
+        }
+
         Actions.reset("tabbar");
     }
 
