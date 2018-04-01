@@ -22,57 +22,48 @@ class SelectLocker extends Component {
         this.state = {
             booking_lockerNo1 : null,
             booking_lockerNo2 : null,
+            loading : true,
             visible: true,
-            stateNo1 : 0,
-            stateNo2 : 0,
-            stateNo3 : 0,
+            stateNo1 : null,
+            stateNo2 : null,
+            disable_no1 : null,
+            disable_no2 : null,
         }
-        this.updateStateToFirebase = this.updateStateToFirebase.bind(this);
+        //this.updateStateToFirebase = this.updateStateToFirebase.bind(this);
         this.componentWillMount = this.componentWillMount.bind(this);
         this.componentDidMount = this.componentDidMount.bind(this);
         this.render = this.render.bind(this);
     };
-    
+
     componentWillMount(){
         this.booking_locker1.on('value',snap => {
-            this.setState({ 
+            this.setState({
                 booking_lockerNo1 : snap.val()
             });
-        });
+            if(this.state.booking_lockerNo1 === 'No_Booking'){
+                this.setState({
+                    disable_no1 : true
+                });
+            }
+        })
         this.booking_locker2.on('value',snap => {
-            this.setState({ 
+            this.setState({
                 booking_lockerNo2 : snap.val()
             });
-        });
-    }
-
-    componentDidMount() {
-        if(this.state.booking_lockerNo1 == 'No_Booking'){
-            this.setState = {stateNo1 : 2}
-            alert(this.state.stateNo1);
-        }
+            if(this.state.booking_lockerNo2 === 'No_Booking'){
+                this.setState({
+                    disable_no2 : true
+                });
+            }
+        })
         
-        this.lockerStatusNo1.on('value',snap => {
-            this.setState({ 
-                stateNo1 : snap.val()
-            });
-        });
-        this.lockerStatusNo2.on('value',snap => {
-            this.setState({ 
-                stateNo2 : snap.val()
-            });
-        });
-        /*this.lockerStatusNo3.on('value',snap => {
-            this.setState({ 
-                stateNo3 : snap.val()
-            });
-        });*/
-        //alert(this.state.booking_lockerNo1);
-
+        
         
     }
-
-    /*updateStateToFirebase()
+    componentDidMount(){
+        
+    }
+    checkLocker()
     {
         if(this.stateNo1 === 3){
             Actions.qrscan();
@@ -82,7 +73,7 @@ class SelectLocker extends Component {
                 LockerStatus: (this.state.stateNo1 == 0 ?  1 : 0 )
             });
         }
-    }*/
+    }
 
     gotoQRPage(){
         Actions.qrscan();
@@ -92,22 +83,12 @@ class SelectLocker extends Component {
         Actions.qrscan2();
     }
     
-    updateState(){
-        alert('OK');
-    }
     render() {
-        if(this.state.booking_lockerNo1 === null){
-            return(
+        if(this.state.booking_lockerNo1 != null && this.state.booking_lockerNo2 != null){ 
+            //alert(this.state.booking_lockerNo1);
+            alert("disable = " + this.state.disable_no2);
+        return(
                 <View style={styles.container}>
-                    
-                    <Spinner visible={this.state.visible} textContent={"Loading..."} textStyle={{color: '#FFF'}} />
-                </View>
-            );
-        }
-        else {
-            return(
-                <View style={styles.container}>
-                    {/* <StatusBar hidden /> */}
                     <Text style={styles.title}>
                         My Locker
                     </Text>
@@ -117,10 +98,8 @@ class SelectLocker extends Component {
                     </Text>
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => this.updateState()}
-                        //onPress={() => this.updateStateToFirebase()}
-                        //onPress={() => this.gotoQRPage()}
-                        //disabled  = 'true'
+                        onPress={() => alert(this.state.booking_lockerNo1)}
+                        disabled = {this.state.disable_no1}
                     >
                         <Text style={styles.buttonText}>
                             {this.state.stateNo1 == 1 ? 'Open' : 'Close'}
@@ -132,22 +111,22 @@ class SelectLocker extends Component {
                     </Text>
                     <TouchableOpacity
                         style = {styles.button}
-                        onPress={()=> this.gotoQRPage2()}
+                        onPress={()=> alert(this.state.booking_lockerNo2)}
+                        disabled = {this.state.disable_no2}
                     >
-                        <Text style={styles.buttonText}>+</Text>  
-                    </TouchableOpacity>
-        {/* button Test*/}    
-                    <Text style={styles.locker}>
-                        Refesh
-                    </Text>
-                    <TouchableOpacity
-                        style = {styles.button}
-                        onPress={()=> alert(this.state.booking_lockerNo1)}
-                    >
-                        <Text style={styles.buttonText}>+</Text>  
+                        <Text style={styles.buttonText}>
+                            {this.state.stateNo2 == 1 ? 'Open' : 'Close'}
+                        </Text>  
                     </TouchableOpacity>
                 </View>
                 
+            );
+        } 
+        else{
+            return(
+                <View style={styles.container}>
+                    <Spinner visible={this.state.visible} textContent={"Loading..."} textStyle={{color: '#FFF'}} />
+                </View>
             );
         }
     }

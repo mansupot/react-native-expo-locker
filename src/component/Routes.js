@@ -87,7 +87,7 @@ class Routes extends Component {
                         <Scene key="tab4" 
                             hideNavBar={true} 
                             component={ ContactPage } 
-                            title="Contact"
+                            title="Booking"
                             iconName="at"
                             icon={TabIcon}
                         />

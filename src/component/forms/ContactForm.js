@@ -7,9 +7,10 @@ import {
     TextInput,
     StatusBar
     } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 
-class SteamForm extends Component {
+class BookingForm extends Component {
 
     render() {
         return(
@@ -17,17 +18,33 @@ class SteamForm extends Component {
                 {/* <StatusBar hidden /> */}
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
-                        ROCK-IT-LOCKER
+                        Booking Locker
                     </Text>
-                    <Text style={{marginVertical : 15, color:'#778899'}}>
-                        ContactForm
-                    </Text>
+        {/*Booking Locker1*/}
+                    <TouchableOpacity
+                        style={styles.button}
+                        onPress={() => Actions.qrscan()}
+                    >
+                        <Text style={styles.buttonText}>
+                            Start Booking No.1
+                        </Text>  
+                    </TouchableOpacity>
+        {/*Booking Locker2*/}    
+                    
+                    <TouchableOpacity
+                        style = {styles.button}
+                        onPress={()=> Actions.qrscan2()}
+                    >
+                        <Text style={styles.buttonText}>
+                            Start Booking No.2
+                        </Text>  
+                    </TouchableOpacity>
                 </View>
             </View>
         );
     }
 }
-export default SteamForm;
+export default BookingForm;
 
 const styles = StyleSheet.create({
     container: {
@@ -41,6 +58,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         //fontWeight: 'bold',
         color : '#F5FFFA',
+        marginVertical : 20,
     },
     textInput: {
         height : 42 ,
