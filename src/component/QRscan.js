@@ -221,7 +221,7 @@ export default class BarcodeScannerExample extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop : 20,
+        marginTop : 23,
         backgroundColor : '#708090' ,
         justifyContent : 'center', 
         alignItems : 'center',

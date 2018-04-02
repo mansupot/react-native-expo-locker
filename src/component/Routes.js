@@ -61,7 +61,7 @@ class Routes extends Component {
                         title="QR Scanner2"
                         hideNavBar={ true }  
                     />
-                    <Scene key="tabbar" tabs={true} hideNavBar={true} >
+                    <Scene key="tabbar" tabs={true} hideNavBar={true} tabBarPosition="bottom">
                         <Scene key="tab1" 
                             hideNavBar={true} 
                             component={ HomePage } 

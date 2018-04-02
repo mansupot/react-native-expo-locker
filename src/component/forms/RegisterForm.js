@@ -177,7 +177,7 @@ export default class RegisterForm extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-        marginTop : 20,
+        marginTop : 23,
         backgroundColor : '#455a64' ,
         justifyContent : 'center', 
         alignItems : 'center',

@@ -149,6 +149,9 @@ class SelectLocker extends Component {
             Firebase.database().ref().update({
                 LockerStatus4: (this.state.stateNo4 == 0 ?  1 : 0 )
             });
+            this.setState({
+                titleButton : this.state.titleButton == 0 ? 1 : 0
+            });
             alert('Locker No.4 Pressed');
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO5'){
@@ -156,7 +159,7 @@ class SelectLocker extends Component {
                 LockerStatus5: (this.state.stateNo5 == 0 ?  1 : 0 )
             });
             this.setState({
-                titleButton5 : this.state.titleButton5 == 0 ? 1 : 0
+                titleButton : this.state.titleButton == 0 ? 1 : 0
             });
             alert('Locker No.5 Pressed');
         }
@@ -171,10 +174,8 @@ class SelectLocker extends Component {
     }
     
     render() {
-        if(this.state.booking_lockerNo1 != null && this.state.booking_lockerNo2 != null){ 
-            //alert(this.state.booking_lockerNo1);
-            //alert("disable = " + this.state.disable_no2);
-        return(
+        if(this.state.booking_lockerNo1 != null && this.state.booking_lockerNo2 != null){
+            return(
                 <View style={styles.container}>
                     <Text style={styles.title}>
                         My Locker
@@ -202,11 +203,10 @@ class SelectLocker extends Component {
                         disabled = {this.state.disable_no2}
                     >
                         <Text style={styles.buttonText}>
-                            {this.state.titleButton5 == 1 ? 'Open' : 'Close'}
+                            {this.state.titleButton == 1 ? 'Open' : 'Close'}
                         </Text>  
                     </TouchableOpacity>
                 </View>
-                
             );
         } 
         else{
@@ -224,7 +224,7 @@ class SelectLocker extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop : 20,
+        marginTop : 23,
         backgroundColor : '#455a64' ,
         justifyContent : 'center', 
         alignItems : 'center',
