@@ -26,7 +26,6 @@ class SelectLocker extends Component {
         this.state = {
             booking_lockerNo1 : null,
             booking_lockerNo2 : null,
-            loading : true,
             visible: true,
             stateNo1 : null,
             stateNo2 : null,
@@ -237,42 +236,54 @@ class SelectLocker extends Component {
 
     namelocker1(){
         if(this.state.booking_lockerNo1 === 'LOCKER_NO1'){
+            this.Bcolor1 = 'yellow';
             return 'Locker.1(Size S)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO2'){
+            this.Bcolor1 = 'yellow';
             return 'Locker.2(Size S)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO3'){
+            this.Bcolor1 = '#32CD32';
             return 'Locker.3(Size M)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO4'){
+            this.Bcolor1 = 'red';
             return 'Locker.4(Size L)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO5'){
+            this.Bcolor1 = 'red';
             return 'Locker.5(Size L)' ;
         }
         else {
+            this.Bcolor1 = '#778899';
             return 'No Locker'
         }
     }
 
     namelocker2(){
         if(this.state.booking_lockerNo2 === 'LOCKER_NO1'){
+            this.Bcolor2 = 'yellow';
             return 'Locker.1(Size S)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO2'){
+            this.Bcolor2 = 'yellow';
             return 'Locker.2(Size S)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO3'){
+            this.Bcolor2 = '#32CD32';
             return 'Locker.3(Size M)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO4'){
+            this.Bcolor2 = 'red';
             return 'Locker.4(Size L)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO5'){
+            this.Bcolor2 = 'red';
             return 'Locker.5(Size L)' ;
         }
         else {
+            this.Bcolor1 = '#778899';
             return 'No Locker'
         }
     }
@@ -296,7 +307,7 @@ class SelectLocker extends Component {
         {/* Locker1*/}
                     <Text style={styles.locker}>
                         No.1 : {'  '}
-                        <Text style = {{color : 'yellow'}}>
+                        <Text style = {{color : this.Bcolor1}}>
                             {
                                 this.namelocker1()
                             }
@@ -315,7 +326,7 @@ class SelectLocker extends Component {
         {/* Locker2*/}    
         <Text style={styles.locker}>
                         No.2 : {'  '}
-                        <Text style = {{color : 'yellow'}}>
+                        <Text style = {{color : this.Bcolor2}}>
                             {
                                 this.namelocker2()
                             }

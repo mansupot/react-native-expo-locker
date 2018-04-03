@@ -74,7 +74,7 @@ class Routes extends Component {
                             hideNavBar={true} 
                             component={ BookingPage } 
                             title="Booking"
-                            iconName="at"
+                            iconName="plus-square"
                             icon={TabIcon}
                         />
                         <Scene key="tab3" 
@@ -91,7 +91,13 @@ class Routes extends Component {
                             iconName="user-circle"
                             icon={TabIcon}
                         />
-                        
+                        <Scene key="tab5" 
+                            hideNavBar={true} 
+                            component={ ProfilePage }  
+                            title="Pay coin" 
+                            iconName="credit-card"
+                            icon={TabIcon}
+                        />
                     </Scene>
                 </Stack>
             </Router>
