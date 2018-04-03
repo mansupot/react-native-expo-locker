@@ -183,7 +183,11 @@ class SelectLocker extends Component {
                 LockerStatus4: (this.state.stateNo4 == 0 ?  1 : 0 )
             });
             this.setState({
+<<<<<<< HEAD
                 titleButton4 : this.state.titleButton4 == 0 ? 1 : 0,
+=======
+                titleButton : this.state.titleButton == 0 ? 1 : 0
+>>>>>>> bf0bf3a8327ada8595e1fb9cc9bbf2c2b8b4c87b
             });
             alert('Locker No.4 Pressed');
         }
@@ -192,7 +196,11 @@ class SelectLocker extends Component {
                 LockerStatus5: (this.state.stateNo5 == 0 ?  1 : 0 )
             });
             this.setState({
+<<<<<<< HEAD
                 titleButton5 : this.state.titleButton5 == 0 ? 1 : 0,
+=======
+                titleButton : this.state.titleButton == 0 ? 1 : 0
+>>>>>>> bf0bf3a8327ada8595e1fb9cc9bbf2c2b8b4c87b
             });
             alert('Locker No.5 Pressed');
         }
@@ -250,10 +258,8 @@ class SelectLocker extends Component {
     }
     
     render() {
-        if(this.state.booking_lockerNo1 != null && this.state.booking_lockerNo2 != null){ 
-            //alert(this.state.booking_lockerNo1);
-            //alert("disable = " + this.state.disable_no2);
-        return(
+        if(this.state.booking_lockerNo1 != null && this.state.booking_lockerNo2 != null){
+            return(
                 <View style={styles.container}>
                     <Text style={styles.title}>
                         My Locker
@@ -283,13 +289,16 @@ class SelectLocker extends Component {
                         disabled = {this.state.disable_no2}
                     >
                         <Text style={styles.buttonText}>
+<<<<<<< HEAD
                             {
                                 b = this.titleButton2()
                             }
+=======
+                            {this.state.titleButton == 1 ? 'Open' : 'Close'}
+>>>>>>> bf0bf3a8327ada8595e1fb9cc9bbf2c2b8b4c87b
                         </Text>  
                     </TouchableOpacity>
                 </View>
-                
             );
         } 
         else{
@@ -307,7 +316,7 @@ class SelectLocker extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop : 20,
+        marginTop : 23,
         backgroundColor : '#455a64' ,
         justifyContent : 'center', 
         alignItems : 'center',
