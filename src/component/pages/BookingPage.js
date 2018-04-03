@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { 
     StyleSheet,
 } from 'react-native';
-import ContactForm from '../forms/ContactForm';
+import BookingForm from '../forms/BookingForm';
 
-class ContactPage extends Component {
+class BookingPage extends Component {
     render() {
         return(
-            <ContactForm />
+            <BookingForm />
         );
     }
 }
-export default ContactPage;
+export default BookingPage;

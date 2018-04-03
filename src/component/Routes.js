@@ -13,7 +13,7 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';   
 import ProfilePage from './pages/ProfilePage'
-import ContactPage from './pages/ContactPage';
+import BookingPage from './pages/BookingPage';
 import SteamPage from './pages/SteamPage';
 import QRscanPage from './pages/QRscanPage';
 import QRscan2Page from './pages/QRscan2Page'
@@ -72,7 +72,7 @@ class Routes extends Component {
                         />
                         <Scene key="tab2" 
                             hideNavBar={true} 
-                            component={ ContactPage } 
+                            component={ BookingPage } 
                             title="Booking"
                             iconName="at"
                             icon={TabIcon}

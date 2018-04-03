@@ -34,6 +34,10 @@ class SelectLocker extends Component {
             stateNo5 : null,
             disable_no1 : null,
             disable_no2 : null,
+            titleButton1 : null,
+            titleButton2 : null,
+            titleButton3 : null,
+            titleButton4 : null,
             titleButton5 : null,
         }
         //this.updateStateToFirebase = this.updateStateToFirebase.bind(this);
@@ -68,27 +72,32 @@ class SelectLocker extends Component {
     componentDidMount(){
         this.lockerStatusNo1.on('value',snap => {
             this.setState({
-                stateNo1 : snap.val()
+                stateNo1 : snap.val(),
+                titleButton1 : snap.val(),
             });
         });
         this.lockerStatusNo2.on('value',snap => {
             this.setState({
-                stateNo2 : snap.val()
+                stateNo2 : snap.val(),
+                titleButton2 : snap.val(),
             });
         });
         this.lockerStatusNo3.on('value',snap => {
             this.setState({
-                stateNo3 : snap.val()
+                stateNo3 : snap.val(),
+                titleButton3 : snap.val(),
             });
         });
         this.lockerStatusNo4.on('value',snap => {
             this.setState({
-                stateNo4 : snap.val()
+                stateNo4 : snap.val(),
+                titleButton4 : snap.val(),
             });
         });
         this.lockerStatusNo5.on('value',snap => {
             this.setState({
-                stateNo5 : snap.val()
+                stateNo5 : snap.val(),
+                titleButton5 : snap.val(),
             });
         });
     }
@@ -98,11 +107,17 @@ class SelectLocker extends Component {
             Firebase.database().ref().update({
                 LockerStatus1: (this.state.stateNo1 == 0 ?  1 : 0 )
             });
+            this.setState({
+                titleButton1 : this.state.titleButton1 == 0 ? 1 : 0,
+            });
             alert('Locker No.1 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO2'){
             Firebase.database().ref().update({
                 LockerStatus2: (this.state.stateNo2 == 0 ?  1 : 0 )
+            });
+            this.setState({
+                titleButton2 : this.state.titleButton2 == 0 ? 1 : 0,
             });
             alert('Locker No.2 Pressed');
         }
@@ -110,17 +125,26 @@ class SelectLocker extends Component {
             Firebase.database().ref().update({
                 LockerStatus3: (this.state.stateNo3 == 0 ?  1 : 0 )
             });
+            this.setState({
+                titleButton3 : this.state.titleButton3 == 0 ? 1 : 0,
+            });
             alert('Locker No.3 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO4'){
             Firebase.database().ref().update({
                 LockerStatus4: (this.state.stateNo4 == 0 ?  1 : 0 )
             });
+            this.setState({
+                titleButton4 : this.state.titleButton4 == 0 ? 1 : 0,
+            });
             alert('Locker No.4 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO5'){
             Firebase.database().ref().update({
                 LockerStatus5: (this.state.stateNo5 == 0 ?  1 : 0 )
+            });
+            this.setState({
+                titleButton5 : this.state.titleButton5 == 0 ? 1 : 0,
             });
             alert('Locker No.5 Pressed');
         }
@@ -131,11 +155,17 @@ class SelectLocker extends Component {
             Firebase.database().ref().update({
                 LockerStatus1: (this.state.stateNo1 == 0 ?  1 : 0 )
             });
+            this.setState({
+                titleButton1 : this.state.titleButton1 == 0 ? 1 : 0,
+            });
             alert('Locker No.1 Pressed');
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO2'){
             Firebase.database().ref().update({
                 LockerStatus2: (this.state.stateNo2 == 0 ?  1 : 0 )
+            });
+            this.setState({
+                titleButton2 : this.state.titleButton2 == 0 ? 1 : 0,
             });
             alert('Locker No.2 Pressed');
         }
@@ -143,11 +173,17 @@ class SelectLocker extends Component {
             Firebase.database().ref().update({
                 LockerStatus3: (this.state.stateNo3 == 0 ?  1 : 0 )
             });
+            this.setState({
+                titleButton3 : this.state.titleButton3 == 0 ? 1 : 0,
+            });
             alert('Locker No.3 Pressed');
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO4'){
             Firebase.database().ref().update({
                 LockerStatus4: (this.state.stateNo4 == 0 ?  1 : 0 )
+            });
+            this.setState({
+                titleButton4 : this.state.titleButton4 == 0 ? 1 : 0,
             });
             alert('Locker No.4 Pressed');
         }
@@ -156,12 +192,55 @@ class SelectLocker extends Component {
                 LockerStatus5: (this.state.stateNo5 == 0 ?  1 : 0 )
             });
             this.setState({
-                titleButton5 : this.state.titleButton5 == 0 ? 1 : 0
+                titleButton5 : this.state.titleButton5 == 0 ? 1 : 0,
             });
             alert('Locker No.5 Pressed');
         }
     }
+    titleButton1(){
+        if(this.state.booking_lockerNo1 === 'LOCKER_NO1'){
 
+            return b = this.state.titleButton1 == 1 ? 'Open' : 'Close'
+        }
+        else if(this.state.booking_lockerNo1 === 'LOCKER_NO2'){
+
+            return b = this.state.titleButton2 == 1 ? 'Open' : 'Close'
+        }
+        else if(this.state.booking_lockerNo1 === 'LOCKER_NO3'){
+
+            return b = this.state.titleButton3 == 1 ? 'Open' : 'Close'
+        }
+        else if(this.state.booking_lockerNo1 === 'LOCKER_NO4'){
+
+            return b = this.state.titleButton4 == 1 ? 'Open' : 'Close'
+        }
+        else if(this.state.booking_lockerNo1 === 'LOCKER_NO5'){
+
+            return b = this.state.titleButton5 == 1 ? 'Open' : 'Close'
+        }
+    }
+    titleButton2(){
+        if(this.state.booking_lockerNo2 === 'LOCKER_NO1'){
+
+            return b = this.state.titleButton1 == 1 ? 'Open' : 'Close'
+        }
+        else if(this.state.booking_lockerNo2 === 'LOCKER_NO2'){
+
+            return b = this.state.titleButton2 == 1 ? 'Open' : 'Close'
+        }
+        else if(this.state.booking_lockerNo2 === 'LOCKER_NO3'){
+
+            return b = this.state.titleButton3 == 1 ? 'Open' : 'Close'
+        }
+        else if(this.state.booking_lockerNo2 === 'LOCKER_NO4'){
+
+            return b = this.state.titleButton4 == 1 ? 'Open' : 'Close'
+        }
+        else if(this.state.booking_lockerNo2 === 'LOCKER_NO5'){
+
+            return b = this.state.titleButton5 == 1 ? 'Open' : 'Close'
+        }
+    }
     gotoQRPage(){
         Actions.qrscan();
     }
@@ -189,7 +268,9 @@ class SelectLocker extends Component {
                         disabled = {this.state.disable_no1}
                     >
                         <Text style={styles.buttonText}>
-                            {this.state.stateNo1 == 1 ? 'Open' : 'Close'}
+                            {
+                                b = this.titleButton1()
+                            }
                         </Text>  
                     </TouchableOpacity>
         {/* Locker2*/}    
@@ -202,7 +283,9 @@ class SelectLocker extends Component {
                         disabled = {this.state.disable_no2}
                     >
                         <Text style={styles.buttonText}>
-                            {this.state.titleButton5 == 1 ? 'Open' : 'Close'}
+                            {
+                                b = this.titleButton2()
+                            }
                         </Text>  
                     </TouchableOpacity>
                 </View>

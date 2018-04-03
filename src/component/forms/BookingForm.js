@@ -29,8 +29,7 @@ class BookingForm extends Component {
                             Start Booking No.1
                         </Text>  
                     </TouchableOpacity>
-        {/*Booking Locker2*/}    
-                    
+        {/*Booking Locker2*/}     
                     <TouchableOpacity
                         style = {styles.button}
                         onPress={()=> Actions.qrscan2()}
