@@ -5,12 +5,163 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
-    StatusBar
+    StatusBar,
+    Alert,
     } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-
+import Firebase from 'firebase';
 
 class BookingForm extends Component {
+    constructor(props) {
+        super(props);
+        userId = Firebase.auth().currentUser.uid;
+        this.booking_locker1 = Firebase.database().ref().child('UserInfo/' + userId + '/booking_locker1');
+        this.booking_locker2 = Firebase.database().ref().child('UserInfo/' + userId + '/booking_locker2');
+        this.state = {
+            booking_lockerNo1 : null,
+            booking_lockerNo2 : null,
+            disableNo1 : null,
+        }
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.componentWillMount = this.componentWillMount.bind(this);
+    };
+    componentWillMount(){
+        this.booking_locker1.on('value',snap => {
+            this.setState({
+                booking_lockerNo1 : snap.val()
+            });
+        })
+        this.booking_locker2.on('value',snap => {
+            this.setState({
+                booking_lockerNo2 : snap.val()
+            });
+        })
+    }
+    componentDidMount(){
+        //this.checkBooking()
+    }
+    checkBooking(){
+        if(this.state.booking_lockerNo1 != 'No_Booking'){
+            return(
+                Alert.alert(
+                    'Are you sure ?',
+                    'Do you want to cancel your locker?',
+                    [
+                        {text: 'OK', onPress: () => this.cancelLocker1()},
+                        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    ],
+                    { cancelable: false }
+                )
+            );
+        }
+        else {
+            return Actions.qrscan();
+        }
+    }
+    checkBooking2(){
+        if(this.state.booking_lockerNo2 != 'No_Booking'){
+            return(
+                Alert.alert(
+                    'Are you sure ?',
+                    'Do you want to cancel your locker?',
+                    [
+                        {text: 'OK', onPress: () => this.cancelLocker2()},
+                        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    ],
+                    { cancelable: false }
+                )
+            );
+        }
+        else {
+            return Actions.qrscan2();
+        }
+    }
+
+    cancelLocker1(){
+        if(this.state.booking_lockerNo1 === 'LOCKER_NO1'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker1 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No1 : 'ROCKITLOCKERNO1',
+            });
+        }
+        else if(this.state.booking_lockerNo1 === 'LOCKER_NO2'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker1 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No2 : 'ROCKITLOCKERNO2',
+            });
+        }
+        else if(this.state.booking_lockerNo1 === 'LOCKER_NO3'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker1 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No3 : 'ROCKITLOCKERNO3',
+            });
+        }
+        else if(this.state.booking_lockerNo1 === 'LOCKER_NO4'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker1 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No4 : 'ROCKITLOCKERNO4',
+            });
+        }
+        else if(this.state.booking_lockerNo1 === 'LOCKER_NO5'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker1 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No5 : 'ROCKITLOCKERNO5',
+            });
+        }
+    }
+
+    cancelLocker2(){
+        if(this.state.booking_lockerNo2 === 'LOCKER_NO1'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker2 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No1 : 'ROCKITLOCKERNO1',
+            });
+        }
+        else if(this.state.booking_lockerNo2 === 'LOCKER_NO2'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker2 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No2 : 'ROCKITLOCKERNO2',
+            });
+        }
+        else if(this.state.booking_lockerNo2 === 'LOCKER_NO3'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker2 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No3 : 'ROCKITLOCKERNO3',
+            });
+        }
+        else if(this.state.booking_lockerNo2 === 'LOCKER_NO4'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker2 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No4 : 'ROCKITLOCKERNO4',
+            });
+        }
+        else if(this.state.booking_lockerNo2 === 'LOCKER_NO5'){
+            Firebase.database().ref('UserInfo/'+userId).update({
+                booking_locker2 : 'No_Booking',
+            });
+            Firebase.database().ref('QRLocker').update({
+                Locker_No5 : 'ROCKITLOCKERNO5',
+            });
+        }
+    }
 
     render() {
         return(
@@ -23,7 +174,7 @@ class BookingForm extends Component {
         {/*Booking Locker1*/}
                     <TouchableOpacity
                         style={styles.button}
-                        onPress={() => Actions.qrscan()}
+                        onPress={() => this.checkBooking()}
                     >
                         <Text style={styles.buttonText}>
                             Start Booking No.1
@@ -32,7 +183,7 @@ class BookingForm extends Component {
         {/*Booking Locker2*/}     
                     <TouchableOpacity
                         style = {styles.button}
-                        onPress={()=> Actions.qrscan2()}
+                        onPress={()=> this.checkBooking2()}
                     >
                         <Text style={styles.buttonText}>
                             Start Booking No.2

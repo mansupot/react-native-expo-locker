@@ -75,17 +75,13 @@ class LoginForm extends Component {
                         Welcome to application by TCT (KMUTNB)
                     </Text>
                 </View>
-                {/* <SocialIcon  */}
-                    {/* title='Sign In With Facebook'  */}
-                    {/* button type='facebook' */}
-                    {/* onPress={this.loginWithFacebook} */}
-                {/* /> */}
                 <TextInput
                     style={styles.textInput}
                     placeholder='Email'
                     onChangeText={(email) => this.setState({email: email.toLowerCase()})}
                     value={this.state.email}
                     onBlur = {this.checkEmail}
+                    underlineColorAndroid ='rgba(255,255,255,0)'
                 />
                 <Text style={styles.alertText}>{this.state.errors.email}</Text>
                 <TextInput
@@ -95,6 +91,7 @@ class LoginForm extends Component {
                     onChangeText={(password) => this.setState({password})}
                     value={this.state.password}
                     onKeyPress={this.checkPassword}
+                    
                 />
                 <Text style={styles.alertText}>{this.state.errors.password}</Text>
                 
@@ -144,6 +141,7 @@ const styles = StyleSheet.create({
         marginVertical : 3,
         paddingLeft : 15,
         fontSize : 17,
+        
     },
     buttonText: {
         fontSize : 22,

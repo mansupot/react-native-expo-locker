@@ -283,7 +283,7 @@ class SelectLocker extends Component {
             return 'Locker.5(Size L)' ;
         }
         else {
-            this.Bcolor1 = '#778899';
+            this.Bcolor2 = '#778899';
             return 'No Locker'
         }
     }
