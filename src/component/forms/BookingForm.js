@@ -21,8 +21,9 @@ class BookingForm extends Component {
             booking_lockerNo1 : null,
             booking_lockerNo2 : null,
             disableNo1 : null,
+            titleButton : null,
         }
-        this.componentDidMount = this.componentDidMount.bind(this);
+        //this.componentDidMount = this.componentDidMount.bind(this);
         this.componentWillMount = this.componentWillMount.bind(this);
     };
     componentWillMount(){
@@ -37,15 +38,30 @@ class BookingForm extends Component {
             });
         })
     }
-    componentDidMount(){
-        //this.checkBooking()
+    titleButton1(){
+        if(this.state.booking_lockerNo1 != 'No_Booking'){
+            return 'Cancle Booking No.1'
+        }
+        else {
+            return 'Start Booking No.1'
+        }
     }
+
+    titleButton2(){
+        if(this.state.booking_lockerNo2 != 'No_Booking'){
+            return 'Cancle Booking No.2'
+        }
+        else {
+            return 'Start Booking No.2'
+        }
+    }
+
     checkBooking(){
         if(this.state.booking_lockerNo1 != 'No_Booking'){
             return(
                 Alert.alert(
                     'Are you sure ?',
-                    'Do you want to cancel your locker?',
+                    'Do you want to cancel your locker No.1 ?',
                     [
                         {text: 'OK', onPress: () => this.cancelLocker1()},
                         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
@@ -63,7 +79,7 @@ class BookingForm extends Component {
             return(
                 Alert.alert(
                     'Are you sure ?',
-                    'Do you want to cancel your locker?',
+                    'Do you want to cancel your locker No.2 ?',
                     [
                         {text: 'OK', onPress: () => this.cancelLocker2()},
                         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
@@ -85,6 +101,7 @@ class BookingForm extends Component {
             Firebase.database().ref('QRLocker').update({
                 Locker_No1 : 'ROCKITLOCKERNO1',
             });
+            this.colorButton = '#4682B4'
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO2'){
             Firebase.database().ref('UserInfo/'+userId).update({
@@ -93,6 +110,7 @@ class BookingForm extends Component {
             Firebase.database().ref('QRLocker').update({
                 Locker_No2 : 'ROCKITLOCKERNO2',
             });
+            this.colorButton = '#4682B4'
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO3'){
             Firebase.database().ref('UserInfo/'+userId).update({
@@ -173,11 +191,16 @@ class BookingForm extends Component {
                     </Text>
         {/*Booking Locker1*/}
                     <TouchableOpacity
-                        style={styles.button}
+                        //style={styles.button}
+                        style = {styles.button}
                         onPress={() => this.checkBooking()}
                     >
                         <Text style={styles.buttonText}>
-                            Start Booking No.1
+                            <Text style={{color : this.state.booking_lockerNo1 == 'No_Booking' ? 'white' : 'red'}}>
+                                {
+                                    this.titleButton1()
+                                }
+                            </Text>
                         </Text>  
                     </TouchableOpacity>
         {/*Booking Locker2*/}     
@@ -186,7 +209,11 @@ class BookingForm extends Component {
                         onPress={()=> this.checkBooking2()}
                     >
                         <Text style={styles.buttonText}>
-                            Start Booking No.2
+                            <Text style={{color : this.state.booking_lockerNo2 == 'No_Booking' ? 'white' : 'red'}}>
+                                {
+                                    this.titleButton2()
+                                }
+                            </Text>
                         </Text>  
                     </TouchableOpacity>
                 </View>
@@ -229,8 +256,8 @@ const styles = StyleSheet.create({
         marginVertical : 25,
         backgroundColor : '#4682B4',
         borderRadius : 30,
-        width : 220,
-        height : 50,
+        width : 250,
+        height : 60,
         alignItems : 'center',
         justifyContent : 'center'
     },
