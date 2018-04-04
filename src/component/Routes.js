@@ -16,7 +16,9 @@ import ProfilePage from './pages/ProfilePage'
 import BookingPage from './pages/BookingPage';
 import SteamPage from './pages/SteamPage';
 import QRscanPage from './pages/QRscanPage';
-import QRscan2Page from './pages/QRscan2Page'
+import QRscan2Page from './pages/QRscan2Page';
+import IntroPage from './pages/IntroPage';
+
 
 class TabIcon extends Component {
     render() {
@@ -36,10 +38,18 @@ class Routes extends Component {
             <Router>
                 <Stack key="root"  >
                     <Scene 
+                        key="intro" 
+                        component={ IntroPage } 
+                        title="Intro" 
+                        initial={ true }
+                        hideNavBar={ true }
+                        scorllBar
+                    />
+                    <Scene 
                         key="login" 
                         component={ LoginPage } 
                         title="Login" 
-                        initial={ true }
+                        //initial={ true }
                         hideNavBar={ true }
                         scorllBar
                     />
@@ -91,13 +101,13 @@ class Routes extends Component {
                             iconName="user-circle"
                             icon={TabIcon}
                         />
-                        <Scene key="tab5" 
+                        {/* <Scene key="tab5" 
                             hideNavBar={true} 
                             component={ ProfilePage }  
                             title="Pay coin" 
                             iconName="credit-card"
                             icon={TabIcon}
-                        />
+                        /> */}
                     </Scene>
                 </Stack>
             </Router>

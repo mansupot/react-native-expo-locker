@@ -256,7 +256,7 @@ class SelectLocker extends Component {
             return 'Locker.5(Size L)' ;
         }
         else {
-            this.Bcolor1 = '#778899';
+            //this.Bcolor1 = '#778899';
             return 'No Locker'
         }
     }
@@ -283,7 +283,6 @@ class SelectLocker extends Component {
             return 'Locker.5(Size L)' ;
         }
         else {
-            this.Bcolor2 = '#778899';
             return 'No Locker'
         }
     }
@@ -307,7 +306,7 @@ class SelectLocker extends Component {
         {/* Locker1*/}
                     <Text style={styles.locker}>
                         No.1 : {'  '}
-                        <Text style = {{color : this.Bcolor1}}>
+                        <Text style = {{color : this.state.booking_lockerNo1 == 'No_Booking' ? '#778899' : this.Bcolor1}}>
                             {
                                 this.namelocker1()
                             }
@@ -326,7 +325,7 @@ class SelectLocker extends Component {
         {/* Locker2*/}    
         <Text style={styles.locker}>
                         No.2 : {'  '}
-                        <Text style = {{color : this.Bcolor2}}>
+                        <Text style = {{color : this.state.booking_lockerNo2 == 'No_Booking' ? '#778899' : this.Bcolor2}}>
                             {
                                 this.namelocker2()
                             }
@@ -369,17 +368,19 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize : 20,
         fontWeight : '500',
-        color : 'white',
+        color : '#5F9EA0',
         padding : 10,
     },
     button: {
         marginBottom : 25,
-        backgroundColor : '#4682B4',
-        borderRadius : 30,
-        width : 220,
-        height : 60,
+        backgroundColor : '#CCFFFF',
+        borderRadius : 64,
+        width : 130,
+        height : 127,
         alignItems : 'center',
-        justifyContent : 'center'
+        justifyContent : 'center',
+        borderWidth : 5,
+        borderColor : '#FFA500'
     },
     title: {
         fontSize: 28,
