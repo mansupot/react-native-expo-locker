@@ -3,6 +3,7 @@ import {
     StyleSheet,
     View,
     Text,
+    Image
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
@@ -17,12 +18,19 @@ class IntroPage extends Component {
     }
 
     render() {
-        setTimeout(function(){Actions.reset("login");}, 5000);
+        setTimeout(function(){Actions.reset("login");}, 4000);
         if(this.state.timePassed == false){
             return(
                 <View style={styles.container}>
+                    <Image
+                        style= {{width: 150, height : 150 }}
+                        source={require('../../images/loading.png')}
+                    />
                     <Text style={styles.title}>
                         ROCK-IT LOCKER
+                    </Text>
+                    <Text style={{marginVertical : 5, color:'#778899'}}>
+                        Version 1.0.1 by TCT-RA #26
                     </Text>
                 </View>
             );
@@ -34,7 +42,7 @@ export default IntroPage;
 const styles = StyleSheet.create({
     container: {
         marginTop : 23,
-        backgroundColor : '#F0F8FF' ,
+        backgroundColor : '#455a64' ,
         justifyContent : 'center', 
         alignItems : 'center',
         flex : 1,
@@ -42,7 +50,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 28,
         fontWeight: 'bold',
-        color : '#00BFFF',
-        marginVertical : 20
+        color : '#FFFFFF',
+        marginVertical : 10
     },
 });

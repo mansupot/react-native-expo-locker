@@ -40,19 +40,19 @@ class BookingForm extends Component {
     }
     titleButton1(){
         if(this.state.booking_lockerNo1 != 'No_Booking'){
-            return 'Cancle Booking No.1'
+            return 'Cancel a locker No.1'
         }
         else {
-            return 'Start Booking No.1'
+            return 'Rent a locker No.1'
         }
     }
 
     titleButton2(){
         if(this.state.booking_lockerNo2 != 'No_Booking'){
-            return 'Cancle Booking No.2'
+            return 'Cancel a locker No.2'
         }
         else {
-            return 'Start Booking No.2'
+            return 'Rent a locker No.2'
         }
     }
 
@@ -187,7 +187,7 @@ class BookingForm extends Component {
                 {/* <StatusBar hidden /> */}
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
-                        Booking Locker
+                        Rent to Locker
                     </Text>
         {/*Booking Locker1*/}
                     <TouchableOpacity

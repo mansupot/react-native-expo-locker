@@ -254,7 +254,9 @@ const styles = StyleSheet.create({
         width : 220,
         height : 50,
         alignItems : 'center',
-        justifyContent : 'center'
+        justifyContent : 'center',
+        borderWidth : 2,
+        borderColor : '#FAFAD2'
     },
     alertText: {
         color : '#660000',

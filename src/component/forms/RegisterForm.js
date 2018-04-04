@@ -41,7 +41,6 @@ export default class RegisterForm extends Component {
         })
     }
     onSubmit() {
-        
         const { emailReg ,rePasswordReg } = this.state;
         //Register Firebase
         if(this.state.emailReg != '' && this.state.passwordReg != '' && this.state.rePasswordReg != '' ){

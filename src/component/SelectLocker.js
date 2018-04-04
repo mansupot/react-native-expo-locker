@@ -237,53 +237,53 @@ class SelectLocker extends Component {
     namelocker1(){
         if(this.state.booking_lockerNo1 === 'LOCKER_NO1'){
             this.Bcolor1 = 'yellow';
-            return 'Locker.1(Size S)' ;
+            return 'LOCKER.S1 (Size S)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO2'){
             this.Bcolor1 = 'yellow';
-            return 'Locker.2(Size S)' ;
+            return 'LOCKER.S2 (Size S)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO3'){
             this.Bcolor1 = '#32CD32';
-            return 'Locker.3(Size M)' ;
+            return 'LOCKER.M3 (Size M)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO4'){
-            this.Bcolor1 = 'red';
-            return 'Locker.4(Size L)' ;
+            this.Bcolor1 = '#A020F0';
+            return 'LOCKER.L4 (Size L)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO5'){
-            this.Bcolor1 = 'red';
-            return 'Locker.5(Size L)' ;
+            this.Bcolor1 = '#A020F0';
+            return 'LOCKER.L5 (Size L)' ;
         }
         else {
             //this.Bcolor1 = '#778899';
-            return 'No Locker'
+            return 'NO LOCKER'
         }
     }
 
     namelocker2(){
         if(this.state.booking_lockerNo2 === 'LOCKER_NO1'){
             this.Bcolor2 = 'yellow';
-            return 'Locker.1(Size S)' ;
+            return 'LOCKER.S1 (Size S)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO2'){
             this.Bcolor2 = 'yellow';
-            return 'Locker.2(Size S)' ;
+            return 'LOCKER.S2 (Size S)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO3'){
             this.Bcolor2 = '#32CD32';
-            return 'Locker.3(Size M)' ;
+            return 'LOCKER.M3 (Size M)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO4'){
-            this.Bcolor2 = 'red';
-            return 'Locker.4(Size L)' ;
+            this.Bcolor2 = '#A020F0';
+            return 'LOCKER.L4 (Size L)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO5'){
-            this.Bcolor2 = 'red';
-            return 'Locker.5(Size L)' ;
+            this.Bcolor2 = '#A020F0';
+            return 'LOCKER.L5 (Size L)' ;
         }
         else {
-            return 'No Locker'
+            return 'NO LOCKER'
         }
     }
     
@@ -313,7 +313,17 @@ class SelectLocker extends Component {
                         </Text>
                     </Text>
                     <TouchableOpacity
-                        style={styles.button}
+                        style = {{
+                            marginBottom : 25,
+                            backgroundColor : this.state.booking_lockerNo1 == 'No_Booking' ? '#B0C4DE' : '#CCFFFF',
+                            borderRadius : 64,
+                            width : 130,
+                            height : 127,
+                            alignItems : 'center',
+                            justifyContent : 'center',
+                            borderWidth : 5,
+                            borderColor : this.state.booking_lockerNo1 == 'No_Booking' ? '#778899' : this.Bcolor1,
+                        }}
                         onPress={() => this.openAndClose_No1()}
                     >
                         <Text style={styles.buttonText}>
@@ -332,7 +342,18 @@ class SelectLocker extends Component {
                         </Text>
                     </Text>
                     <TouchableOpacity
-                        style = {styles.button}
+                        //style = {styles.button}
+                        style = {{
+                            marginBottom : 25,
+                            backgroundColor : this.state.booking_lockerNo1 == 'No_Booking' ? '#B0C4DE' : '#CCFFFF',
+                            borderRadius : 64,
+                            width : 130,
+                            height : 127,
+                            alignItems : 'center',
+                            justifyContent : 'center',
+                            borderWidth : 5,
+                            borderColor : this.state.booking_lockerNo2 == 'No_Booking' ? '#778899' : this.Bcolor2,
+                        }}
                         onPress={()=> this.openAndClose_No2()}
                     >
                         <Text style={styles.buttonText}>
@@ -370,6 +391,7 @@ const styles = StyleSheet.create({
         fontWeight : '500',
         color : '#5F9EA0',
         padding : 10,
+        fontWeight: 'bold',
     },
     button: {
         marginBottom : 25,
@@ -380,11 +402,13 @@ const styles = StyleSheet.create({
         alignItems : 'center',
         justifyContent : 'center',
         borderWidth : 5,
-        borderColor : '#FFA500'
+        borderColor : '#778899',
+        
     },
     title: {
         fontSize: 28,
-        marginBottom : 50,
+        marginTop : 10,
+        marginBottom : 30,
         //fontWeight: 'bold',
         color : '#F5FFFA',
     },
