@@ -18,6 +18,7 @@ import SteamPage from './pages/SteamPage';
 import QRscanPage from './pages/QRscanPage';
 import QRscan2Page from './pages/QRscan2Page';
 import IntroPage from './pages/IntroPage';
+import StatusPage from './pages/StatusPage';
 
 
 class TabIcon extends Component {
@@ -103,7 +104,7 @@ class Routes extends Component {
                         />
                         <Scene key="tab5" 
                             hideNavBar={true} 
-                            component={ ProfilePage }  
+                            component={ StatusPage }  
                             title="Status" 
                             iconName="archive"
                             icon={TabIcon}
