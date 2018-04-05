@@ -53,7 +53,7 @@ export default class RegisterForm extends Component {
                 Firebase.database().ref('UserInfo/' + userId).set({
                     name : this.state.nameReg,
                     email : this.state.emailReg ,
-                    password : this.state.rePasswordReg,
+                    //password : this.state.rePasswordReg,
                     tel : this.state.telReg,
                     booking_locker1: 'No_Booking',
                     booking_locker2: 'No_Booking',

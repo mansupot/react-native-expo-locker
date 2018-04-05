@@ -11,95 +11,100 @@ import {
     } from 'react-native';
 import Firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import { Divider }from 'react-native-elements';
+import { 
+    Divider,
+}from 'react-native-elements';
 
 
 class StatusForm extends Component {
     constructor(props) {
         super(props);
-        userId = Firebase.auth().currentUser.uid;
-        this.name = Firebase.database().ref().child('UserInfo/'+userId+'/name');
-        this.email = Firebase.database().ref().child('UserInfo/'+userId+'/email');
-        this.tel = Firebase.database().ref().child('UserInfo/'+userId+'/tel');
-        
+        this.locker1 = Firebase.database().ref().child('QRLocker/Locker_No1');
+        this.locker2 = Firebase.database().ref().child('QRLocker/Locker_No2');
+        this.locker3 = Firebase.database().ref().child('QRLocker/Locker_No3');
+        this.locker4 = Firebase.database().ref().child('QRLocker/Locker_No4');
+        this.locker5 = Firebase.database().ref().child('QRLocker/Locker_No5');
         this.state = {
-            name : '',
-            email : '',
-            tel : '',
+            S1 : null ,
+            S2 : null,
+            M1 : null,
+            L1 : null,
+            L2 : null,
         };
         this.componentDidMount = this.componentDidMount.bind(this);
     };
-
     componentDidMount(){
-        this.name.on('value',snap =>{
+        this.locker1.on('value',snap =>{
             this.setState({
-                name : snap.val()
+                S1 : snap.val()
                 
             });
         });
-        this.email.on('value',snap =>{
+        this.locker2.on('value',snap =>{
             this.setState({
-                email : snap.val()
+                S2 : snap.val()
                 
             });
         });
-        this.tel.on('value',snap =>{
+        this.locker3.on('value',snap =>{
             this.setState({
-                tel : snap.val()
+                M1 : snap.val()
+                
+            });
+        });
+        this.locker4.on('value',snap =>{
+            this.setState({
+                L1 : snap.val()
+                
+            });
+        });
+        this.locker5.on('value',snap =>{
+            this.setState({
+                L2 : snap.val()
                 
             });
         });
     }
-    logOutAuth(){
-        Firebase.auth().signOut()
-        .then(() => {
-            Alert.alert(
-                'Are you sure ?',
-                'You want to log out on this time ?',
-                [
-                    {text: 'OK', onPress: () => Actions.reset("login" )},
-                    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-                ],
-                { cancelable: false }
-              )
-        })
-        .catch(() => {
-            alert("Can't log out on this time.");
-        });
-    };
-
     render() {
         return(
             <View style={styles.container}>
-                {/* <StatusBar hidden /> */}
-                <View style={{alignItems : 'center',justifyContent: 'center'}}> 
+                <View style={{alignItems : 'center',justifyContent: 'center' }}> 
                     <Text style={styles.title}>
-                        My Profile 55555
+                        Status Locker
                     </Text>
-                    <Image
-                        style= {{width: 100, height : 100 }}
-                        source={require('../../images/profile.png')}
-                    />
-                    <View>
-                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
-                            Name : {this.state.name}
+                    <View style={{backgroundColor : '#778899', borderRadius : 10 , borderColor : '#FF6600'}}>
+                        <Text style={{marginVertical : 12, color:'yellow',fontSize : 18 , paddingHorizontal : 10}}>
+                            S1 (Size S){'\t'} : {'\t'}
+                            <Text style={{color : this.state.S1== 'Rented' ? 'red' : '#7FFF00'}}>
+                                {this.state.S1 == 'Rented' ? 'Rented' : 'Ready for rent'}
+                            </Text>
                         </Text>
-                        <Divider style={{ backgroundColor: '#778899' }} />
-                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
-                            Email : {this.state.email}
+                        <Text style={{marginVertical : 12, color:'yellow',fontSize : 18 ,paddingHorizontal : 10}}>
+                            S2 (Size S){'\t'} : {'\t'}
+                            <Text style={{color : this.state.S2== 'Rented' ? 'red' : '#7FFF00'}}>
+                                {this.state.S2 == 'Rented' ? 'Rented' : 'Ready for rent'}
+                            </Text>
                         </Text>
-                        <Divider style={{ backgroundColor: '#778899' }} />
-                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
-                            Tel. : {this.state.tel}
+                        <Text style={{marginVertical : 12, color:'#32CD32',fontSize : 18,paddingHorizontal : 10}}>
+                            M1 (Size M){'\t'} : {'\t'}
+                            <Text style={{color : this.state.M1== 'Rented' ? 'red' : '#7FFF00'}}>
+                                {this.state.M1 == 'Rented' ? 'Rented' : 'Ready for rent'}
+                            </Text>
                         </Text>
-                        
+                        <Text style={{marginVertical : 12, color:'#A020F0',fontSize : 18,paddingHorizontal : 10}}>
+                            L1 (Size L){'\t\t'} : {'\t'}
+                            <Text style={{color : this.state.L1== 'Rented' ? 'red' : '#7FFF00'}}>
+                                {this.state.L1 == 'Rented' ? 'Rented' : 'Ready for rent'}
+                            </Text>
+                        </Text>
+                        {/* <Divider style={{ backgroundColor: '#778899' ,paddingHorizontal : 10}} /> */}
+                        <Text style={{marginVertical : 12, color:'#A020F0',fontSize : 18,paddingHorizontal : 10}}>
+                            L1 (Size L){'\t\t'} : {'\t'}
+                            <Text style={{color : this.state.L2== 'Rented' ? 'red' : '#7FFF00'}}>
+                                {this.state.L2 == 'Rented' ? 'Rented' : 'Ready for rent'}
+                            </Text>
+                        </Text>
                     </View>
-                    <TouchableOpacity
-                        style = {styles.button}
-                        onPress={()=> this.logOutAuth()}
-                    >
-                        <Text style={styles.buttonText}>Log out</Text>  
-                    </TouchableOpacity>
                 </View>
             </View>
         );
@@ -118,8 +123,9 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 28,
         //fontWeight: 'bold',
-        color : '#F5FFFA',
-        marginVertical : 20
+        color : 'white',
+        //marginTop : 20,
+        marginBottom : 50
     },
     textInput: {
         height : 42 ,
@@ -145,7 +151,7 @@ const styles = StyleSheet.create({
         alignItems : 'center',
         justifyContent : 'center',
         borderWidth : 2,
-        borderColor : '#FAFAD2'
+        borderColor : '#455a64'
     },
     alertText: {
         color : '#660000',

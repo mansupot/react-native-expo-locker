@@ -19,6 +19,8 @@ class LoginForm extends Component {
         this.state = {
             email: 'admin@hotmail.com' ,
             password: '12345678',
+            // email: '' ,
+            // password: '',
             errors: {
                 email: '',
                 password: '',

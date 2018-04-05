@@ -81,15 +81,15 @@ class ProfileForm extends Component {
                         source={require('../../images/profile.png')}
                     />
                     <View>
-                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
+                        <Text style={{marginVertical : 12, color:'#455a64',fontSize : 18}}>
                             Name : {this.state.name}
                         </Text>
                         <Divider style={{ backgroundColor: '#778899' }} />
-                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
+                        <Text style={{marginVertical : 12, color:'#455a64',fontSize : 18}}>
                             Email : {this.state.email}
                         </Text>
                         <Divider style={{ backgroundColor: '#778899' }} />
-                        <Text style={{marginVertical : 12, color:'white',fontSize : 18}}>
+                        <Text style={{marginVertical : 12, color:'#455a64',fontSize : 18}}>
                             Tel. : {this.state.tel}
                         </Text>
                         
@@ -109,8 +109,8 @@ export default ProfileForm;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop : 23,
-        backgroundColor : '#455a64' ,
+        //marginTop : 23,
+        backgroundColor : '#FFFAF0' ,
         justifyContent : 'center', 
         alignItems : 'center',
         flex : 1,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 28,
         //fontWeight: 'bold',
-        color : '#F5FFFA',
+        color : '#455a64',
         marginVertical : 20
     },
     textInput: {
@@ -138,14 +138,14 @@ const styles = StyleSheet.create({
     },
     button: {
         marginVertical : 25,
-        backgroundColor : '#4682B4',
+        backgroundColor : '#FFFACD',
         borderRadius : 30,
         width : 220,
         height : 50,
         alignItems : 'center',
         justifyContent : 'center',
         borderWidth : 2,
-        borderColor : '#FAFAD2'
+        borderColor : '#778899'
     },
     alertText: {
         color : '#660000',

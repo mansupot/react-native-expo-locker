@@ -140,7 +140,7 @@ export default class BarcodeScannerExample extends React.Component {
                 booking_locker2 : 'LOCKER_NO1',
             });
             Firebase.database().ref('QRLocker').update({
-                Locker_No1 : 'Booked',
+                Locker_No1 : 'Rented',
             });
         }
         else if(this.state.statusbar == this.state.QRlockerNo2) {
@@ -148,7 +148,7 @@ export default class BarcodeScannerExample extends React.Component {
                 booking_locker2 : 'LOCKER_NO2',
             });
             Firebase.database().ref('QRLocker').update({
-                Locker_No2 : 'Booked',
+                Locker_No2 : 'Rented',
             });
         }
         else if(this.state.statusbar == this.state.QRlockerNo3) {
@@ -156,7 +156,7 @@ export default class BarcodeScannerExample extends React.Component {
                 booking_locker2 : 'LOCKER_NO3',
             });
             Firebase.database().ref('QRLocker').update({
-                Locker_No3 : 'Booked',
+                Locker_No3 : 'Rented',
             });
         }
         else if(this.state.statusbar == this.state.QRlockerNo4) {
@@ -164,7 +164,7 @@ export default class BarcodeScannerExample extends React.Component {
                 booking_locker2 : 'LOCKER_NO4',
             });
             Firebase.database().ref('QRLocker').update({
-                Locker_No4 : 'Booked',
+                Locker_No4 : 'Rented',
             });
         }
         else if(this.state.statusbar == this.state.QRlockerNo5) {
@@ -172,7 +172,7 @@ export default class BarcodeScannerExample extends React.Component {
                 booking_locker2 : 'LOCKER_NO5',
             });
             Firebase.database().ref('QRLocker').update({
-                Locker_No5 : 'Booked',
+                Locker_No5 : 'Rented',
             });
         }
 

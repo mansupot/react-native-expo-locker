@@ -3,7 +3,8 @@ import {
     StyleSheet,
     View,
     Text,
-    Image
+    Image,
+    StatusBar
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
@@ -22,6 +23,7 @@ class IntroPage extends Component {
         if(this.state.timePassed == false){
             return(
                 <View style={styles.container}>
+                    <StatusBar hidden />
                     <Image
                         style= {{width: 150, height : 150 }}
                         source={require('../../images/loading.png')}
@@ -41,7 +43,7 @@ export default IntroPage;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop : 23,
+        //marginTop : 23,
         backgroundColor : '#455a64' ,
         justifyContent : 'center', 
         alignItems : 'center',

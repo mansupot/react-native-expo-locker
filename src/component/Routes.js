@@ -97,16 +97,16 @@ class Routes extends Component {
                         />
                         <Scene key="tab4" 
                             hideNavBar={true} 
-                            component={ ProfilePage }  
-                            title="Profile" 
-                            iconName="user-circle"
-                            icon={TabIcon}
-                        />
-                        <Scene key="tab5" 
-                            hideNavBar={true} 
                             component={ StatusPage }  
                             title="Status" 
                             iconName="archive"
+                            icon={TabIcon}
+                        />
+                        <Scene key="tab5" 
+                            hideNavBar={false} 
+                            component={ ProfilePage }  
+                            title="Profile" 
+                            iconName="user-circle"
                             icon={TabIcon}
                         />
                     </Scene>
