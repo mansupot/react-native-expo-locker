@@ -5,24 +5,42 @@ import {
     StyleSheet,
     TouchableOpacity,
     TextInput,
-    StatusBar
+    StatusBar,
+    WebView
     } from 'react-native';
-
+//import RtspPlayer from 'react-native-rtspplayer'
 
 class SteamForm extends Component {
-
+    constructor(props) {
+        super(props),
+        this.state = {
+            uri : ''
+        }
+    }
+    
     render() {
         return(
             <View style={styles.container}>
                 {/* <StatusBar hidden /> */}
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
-                    <Text style={styles.title}>
+                    {/* <Text style={styles.title}>
                         ROCK-IT-LOCKER
                     </Text>
                     <Text style={{marginVertical : 15, color:'#778899'}}>
                         SteamForm
-                    </Text>
+                    </Text> */}
+                    
+                    {/* <RtspPlayer
+                        ref='player'
+                        paused={this.state.paused}
+                        style={[styles.vlcplayer,this.state.customStyle]}
+                        source={{uri:this.state.uri,useTcp:true,width:playerDefaultWidth,height:210}}
+                    /> */}
                 </View>
+                <WebView
+                    source={{uri: 'https://www.youtube.com/watch?v=JK6cI3CVDBY'}}
+                    style={{marginTop: 20 , width : 300 }}
+                />
             </View>
         );
     }
