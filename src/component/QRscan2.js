@@ -190,7 +190,7 @@ export default class BarcodeScannerExample extends React.Component {
             return (
             <View style={styles.container}>
                 {/* <StatusBar hidden/> */}
-                <Text style={styles.title}>Scan QR Code 2</Text>
+                <Text style={styles.title}>Scan QR Code</Text>
                 <BarCodeScanner
                     onBarCodeRead={this._handleBarCodeRead}
                     type={'back'}

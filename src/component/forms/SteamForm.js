@@ -6,41 +6,24 @@ import {
     TouchableOpacity,
     TextInput,
     StatusBar,
-    WebView
+    WebView,
+    Video,
+    VideoControl,
+    TouchableHighlight
     } from 'react-native';
-//import RtspPlayer from 'react-native-rtspplayer'
+import { play } from 'react-native-vlc-player'
 
 class SteamForm extends Component {
-    constructor(props) {
-        super(props),
-        this.state = {
-            uri : ''
-        }
+    constructor(props, context) {
+        super(props, context)
     }
-    
     render() {
         return(
             <View style={styles.container}>
-                {/* <StatusBar hidden /> */}
-                <View style={{alignItems : 'center',justifyContent: 'center'}}> 
-                    {/* <Text style={styles.title}>
-                        ROCK-IT-LOCKER
-                    </Text>
-                    <Text style={{marginVertical : 15, color:'#778899'}}>
-                        SteamForm
-                    </Text> */}
-                    
-                    {/* <RtspPlayer
-                        ref='player'
-                        paused={this.state.paused}
-                        style={[styles.vlcplayer,this.state.customStyle]}
-                        source={{uri:this.state.uri,useTcp:true,width:playerDefaultWidth,height:210}}
-                    /> */}
-                </View>
-                <WebView
-                    source={{uri: 'https://www.youtube.com/watch?v=JK6cI3CVDBY'}}
-                    style={{marginTop: 20 , width : 300 }}
-                />
+                <TouchableHighlight
+                    onPress={() => { play('') }}>
+                    <Text >Play Video!</Text>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -55,6 +38,13 @@ const styles = StyleSheet.create({
         alignItems : 'center',
         flex : 1,
     },
+    backgroundVideo: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+      },
     title: {
         fontSize: 28,
         //fontWeight: 'bold',
