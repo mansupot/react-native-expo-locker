@@ -91,9 +91,10 @@ class Routes extends Component {
                         <Scene key="tab3" 
                             hideNavBar={true} 
                             component={ SteamPage } 
-                            title="Steam"
+                            title="Stream"
                             iconName="camera"
                             icon={TabIcon} 
+                            
                         />
                         <Scene key="tab4" 
                             hideNavBar={true} 

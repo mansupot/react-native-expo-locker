@@ -194,7 +194,7 @@ export default class BarcodeScannerExample extends React.Component {
                 <BarCodeScanner
                     onBarCodeRead={this._handleBarCodeRead}
                     type={'back'}
-                    style={{width : '90%' , height : '60%'}}
+                    style={{width : '95%' , height : '65%'}}
                 />
                 <TouchableOpacity
                     style={styles.button}

@@ -7,23 +7,43 @@ import {
     TextInput,
     StatusBar,
     WebView,
-    Video,
+    //Video,
     VideoControl,
-    TouchableHighlight
+    TouchableHighlight,
+    Linking
     } from 'react-native';
-import { play } from 'react-native-vlc-player'
+// import VideoPlayer from 'react-native-video-controls';
+import { Video } from 'expo';
+import AppLink from 'react-native-app-link';
 
 class SteamForm extends Component {
     constructor(props, context) {
         super(props, context)
+        this.state = {
+            ipstream : ''
+        }
     }
     render() {
         return(
             <View style={styles.container}>
-                <TouchableHighlight
-                    onPress={() => { play('') }}>
-                    <Text >Play Video!</Text>
-                </TouchableHighlight>
+                <Text style={styles.title}>Stream View</Text>
+                <View>
+                    <Text style = {{color : 'white' , fontWeight : 'bold'}}>Suggestion for Streamimg</Text>
+                    <Text style = {{color : 'white'}}>1.Install the VLC application in Play Store/App Store</Text>
+                    <Text style = {{color : 'white'}}>2.Enter the ip stream followed by the Port</Text>
+                    <Text style = {{color : 'white'}}>(Ex.192.168.1.1: 554)</Text>
+                    <Text style = {{color : 'white'}}>3.Press the Open to VLC App button</Text>
+                </View>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder='IP stream'
+                    onChangeText={(ipstream) => this.setState({ipstream})}
+                />
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={() => Linking.openURL('rtsp://admin:admin@'+this.state.ipstream+'/live')}>
+                    <Text style={styles.buttonText}>Open to VLC App</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -49,13 +69,14 @@ const styles = StyleSheet.create({
         fontSize: 28,
         //fontWeight: 'bold',
         color : '#F5FFFA',
+        marginBottom : 25,
     },
     textInput: {
         height : 42 ,
         width : 300,
         backgroundColor : '#F8F8FF',
         borderRadius : 20,
-        marginVertical : 3,
+        marginVertical : 10,
         paddingLeft : 15,
         fontSize : 17,
     },
@@ -72,7 +93,9 @@ const styles = StyleSheet.create({
         width : 220,
         height : 50,
         alignItems : 'center',
-        justifyContent : 'center'
+        justifyContent : 'center',
+        borderWidth : 2,
+        borderColor : '#FAFAD2'
     },
     alertText: {
         color : '#660000',

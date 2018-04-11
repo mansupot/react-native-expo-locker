@@ -11,7 +11,8 @@ import {
     } from 'react-native';
 import Firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import { Divider }from 'react-native-elements';
+import { Divider } from 'react-native-elements';
+import { Constants } from 'expo';
 
 
 class ProfileForm extends Component {
@@ -114,6 +115,8 @@ const styles = StyleSheet.create({
         justifyContent : 'center', 
         alignItems : 'center',
         flex : 1,
+        justifyContent: 'center',
+        paddingTop: Constants.statusBarHeight,
     },
     title: {
         fontSize: 28,
