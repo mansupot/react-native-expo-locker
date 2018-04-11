@@ -10,17 +10,18 @@ import {
     //Video,
     VideoControl,
     TouchableHighlight,
-    Linking
+    Linking,
+    Image
     } from 'react-native';
 // import VideoPlayer from 'react-native-video-controls';
-import { Video } from 'expo';
+//import { Video } from 'expo';
 import AppLink from 'react-native-app-link';
 
 class SteamForm extends Component {
     constructor(props, context) {
         super(props, context)
         this.state = {
-            ipstream : ''
+            ipStream : ''
         }
     }
     render() {
@@ -37,13 +38,17 @@ class SteamForm extends Component {
                 <TextInput
                     style={styles.textInput}
                     placeholder='IP stream'
-                    onChangeText={(ipstream) => this.setState({ipstream})}
+                    onChangeText={(ipStream) => this.setState({ipStream})}
                 />
                 <TouchableOpacity 
                     style={styles.button}
-                    onPress={() => Linking.openURL('rtsp://admin:admin@'+this.state.ipstream+'/live')}>
+                    onPress={() => Linking.openURL('rtsp://admin:admin@'+this.state.ipStream+'/live')}>
                     <Text style={styles.buttonText}>Open to VLC App</Text>
                 </TouchableOpacity>
+                <Image
+                    style= {{width: 100, height : 100 }}
+                    source={require('../../images/vlc.png')}
+                />
             </View>
         );
     }
@@ -88,14 +93,14 @@ const styles = StyleSheet.create({
     },
     button: {
         marginVertical : 25,
-        backgroundColor : '#4682B4',
+        backgroundColor : '#FF9900',
         borderRadius : 30,
         width : 220,
         height : 50,
         alignItems : 'center',
         justifyContent : 'center',
         borderWidth : 2,
-        borderColor : '#FAFAD2'
+        borderColor : '#FFFFFF'
     },
     alertText: {
         color : '#660000',

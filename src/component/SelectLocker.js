@@ -137,7 +137,7 @@ class SelectLocker extends Component {
             // alert('Locker No.5 Pressed');
         }
         else {
-            alert('Please book your locker. \n --> Go to Booking tab.');
+            alert('Please rent your locker. \n --> Go to Rent tab.');
         }
     }
 
@@ -188,7 +188,7 @@ class SelectLocker extends Component {
             // alert('Locker No.5 Pressed');
         }
         else {
-            alert('Please book your locker. \n --> Go to Booking tab.');
+            alert('Please rent your locker. \n --> Go to Rent tab.');
         }
     }
 

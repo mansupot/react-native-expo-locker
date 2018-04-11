@@ -59,7 +59,9 @@ class ProfileForm extends Component {
                 'You want to log out on this time ?',
                 [
                     {text: 'OK', onPress: () => Actions.reset("login" )},
-                    {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                    {text: 'Cancel', onPress: () => 
+                    alert('ROCK-IT LOCKER \n Mr.Supot Patsaithong \n Mr.Phuwadit Noppachinnawong \n Deverloper from KMUTNB \n Current Ver.1.0.1')
+                    , style: 'cancel'},
                 ],
                 { cancelable: false }
               )
