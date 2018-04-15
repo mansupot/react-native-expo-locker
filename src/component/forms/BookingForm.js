@@ -192,11 +192,21 @@ class BookingForm extends Component {
         {/*Booking Locker1*/}
                     <TouchableOpacity
                         //style={styles.button}
-                        style = {styles.button}
+                        style = {{
+                            marginVertical : 25,
+                            backgroundColor : this.state.booking_lockerNo1 == 'No_Booking' ? '#4682B4' : 'red',
+                            borderRadius : 30,
+                            width : 250,
+                            height : 60,
+                            alignItems : 'center',
+                            justifyContent : 'center',
+                            borderWidth : 2,
+                            borderColor : '#FAFAD2'
+                        }}
                         onPress={() => this.checkBooking()}
                     >
                         <Text style={styles.buttonText}>
-                            <Text style={{color : this.state.booking_lockerNo1 == 'No_Booking' ? 'white' : 'red'}}>
+                            <Text style={{color : 'white'}}>
                                 {
                                     this.titleButton1()
                                 }
@@ -205,11 +215,22 @@ class BookingForm extends Component {
                     </TouchableOpacity>
         {/*Booking Locker2*/}     
                     <TouchableOpacity
-                        style = {styles.button}
+                        // style = {styles.button}
+                        style = {{
+                            marginVertical : 25,
+                            backgroundColor : this.state.booking_lockerNo2 == 'No_Booking' ? '#4682B4' : 'red',
+                            borderRadius : 30,
+                            width : 250,
+                            height : 60,
+                            alignItems : 'center',
+                            justifyContent : 'center',
+                            borderWidth : 2,
+                            borderColor : '#FAFAD2'
+                        }}
                         onPress={()=> this.checkBooking2()}
                     >
                         <Text style={styles.buttonText}>
-                            <Text style={{color : this.state.booking_lockerNo2 == 'No_Booking' ? 'white' : 'red'}}>
+                            <Text style={{color : 'white'}}>
                                 {
                                     this.titleButton2()
                                 }

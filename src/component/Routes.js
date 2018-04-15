@@ -6,7 +6,7 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
-import { Router , Stack , Scene  } from 'react-native-router-flux';
+import { Router , Stack , Scene , Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 
 import LoginPage from './pages/LoginPage';
@@ -104,8 +104,8 @@ class Routes extends Component {
                             icon={TabIcon}
                         />
                         <Scene key="tab5" 
-                            hideNavBar={false} 
-                            component={ ProfilePage }  
+                            hideNavBar={true} 
+                            component={ ProfilePage }
                             title="Profile" 
                             iconName="user-circle"
                             icon={TabIcon}

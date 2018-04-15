@@ -99,7 +99,7 @@ class StatusForm extends Component {
                         </Text>
                         {/* <Divider style={{ backgroundColor: '#778899' ,paddingHorizontal : 10}} /> */}
                         <Text style={{marginVertical : 12, color:'#A020F0',fontSize : 18,paddingHorizontal : 10}}>
-                            L1 (Size L){'\t\t'} : {'\t'}
+                            L2 (Size L){'\t'} : {'\t'}
                             <Text style={{color : this.state.L2== 'Rented' ? 'red' : '#7FFF00'}}>
                                 {this.state.L2 == 'Rented' ? 'Rented' : 'Ready for rent'}
                             </Text>
