@@ -2,7 +2,7 @@
   "expo": {
    "name": "ROCK-IT",
    "icon": "./path/icon/loading.png",
-   "version": "1.0.2",
+   "version": "1.1",
    "slug": "MrSupotTH",
    "sdkVersion": "25.0.0",
    "ios": {

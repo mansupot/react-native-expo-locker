@@ -60,7 +60,7 @@ class ProfileForm extends Component {
                 [
                     {text: 'OK', onPress: () => Actions.reset("login" )},
                     {text: 'Cancel', onPress: () => 
-                    alert('ROCK-IT LOCKER \n Mr.Supot Patsaithong \n Mr.Phuwadit Noppachinnawong \n Deverloper from KMUTNB \n Current Ver.1.0.2')
+                    alert('ROCK-IT LOCKER \n Mr.Supot Patsaithong \n Mr.Phuwadit Noppachinnawong \n Deverloper from KMUTNB \n Current Ver.1.1(beta)')
                     , style: 'cancel'},
                 ],
                 { cancelable: false }

@@ -14,11 +14,11 @@ class SelectLocker extends Component {
     constructor(props) {
         super(props);
         
-        this.lockerStatusNo1 = Firebase.database().ref().child('LockerStatus1');
-        this.lockerStatusNo2 = Firebase.database().ref().child('LockerStatus2');
-        this.lockerStatusNo3 = Firebase.database().ref().child('LockerStatus3');
-        this.lockerStatusNo4 = Firebase.database().ref().child('LockerStatus4');
-        this.lockerStatusNo5 = Firebase.database().ref().child('LockerStatus5');
+        this.lockerStatusNo1 = Firebase.database().ref().child('LockerStatus/S1');
+        this.lockerStatusNo2 = Firebase.database().ref().child('LockerStatus/S2');
+        this.lockerStatusNo3 = Firebase.database().ref().child('LockerStatus/M1');
+        this.lockerStatusNo4 = Firebase.database().ref().child('LockerStatus/L1');
+        this.lockerStatusNo5 = Firebase.database().ref().child('LockerStatus/L2');
 
         userId = Firebase.auth().currentUser.uid;
         this.booking_locker1 = Firebase.database().ref().child('UserInfo/' + userId + '/booking_locker1');
@@ -92,8 +92,8 @@ class SelectLocker extends Component {
 
     openAndClose_No1(){
         if(this.state.booking_lockerNo1 === 'LOCKER_NO1'){
-            Firebase.database().ref().update({
-                LockerStatus1: (this.state.stateNo1 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                S1 : (this.state.stateNo1 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton1 : this.state.titleButton1 == 0 ? 1 : 0,
@@ -101,8 +101,8 @@ class SelectLocker extends Component {
             // alert('Locker No.1 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO2'){
-            Firebase.database().ref().update({
-                LockerStatus2: (this.state.stateNo2 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                S2 : (this.state.stateNo2 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton2 : this.state.titleButton2 == 0 ? 1 : 0,
@@ -110,8 +110,8 @@ class SelectLocker extends Component {
             // alert('Locker No.2 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO3'){
-            Firebase.database().ref().update({
-                LockerStatus3: (this.state.stateNo3 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                M1 : (this.state.stateNo3 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton3 : this.state.titleButton3 == 0 ? 1 : 0,
@@ -119,8 +119,8 @@ class SelectLocker extends Component {
             // alert('Locker No.3 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO4'){
-            Firebase.database().ref().update({
-                LockerStatus4: (this.state.stateNo4 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                L1 : (this.state.stateNo4 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton4 : this.state.titleButton4 == 0 ? 1 : 0,
@@ -128,8 +128,8 @@ class SelectLocker extends Component {
             // alert('Locker No.4 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO5'){
-            Firebase.database().ref().update({
-                LockerStatus5: (this.state.stateNo5 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                L2 : (this.state.stateNo5 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton5 : this.state.titleButton5 == 0 ? 1 : 0,
@@ -143,8 +143,8 @@ class SelectLocker extends Component {
 
     openAndClose_No2(){
         if(this.state.booking_lockerNo2 === 'LOCKER_NO1'){
-            Firebase.database().ref().update({
-                LockerStatus1: (this.state.stateNo1 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                S1 : (this.state.stateNo1 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton1 : this.state.titleButton1 == 0 ? 1 : 0,
@@ -152,8 +152,8 @@ class SelectLocker extends Component {
             // alert('Locker No.1 Pressed');
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO2'){
-            Firebase.database().ref().update({
-                LockerStatus2: (this.state.stateNo2 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                S2 : (this.state.stateNo2 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton2 : this.state.titleButton2 == 0 ? 1 : 0,
@@ -161,8 +161,8 @@ class SelectLocker extends Component {
             // alert('Locker No.2 Pressed');
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO3'){
-            Firebase.database().ref().update({
-                LockerStatus3: (this.state.stateNo3 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                M1 : (this.state.stateNo3 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton3 : this.state.titleButton3 == 0 ? 1 : 0,
@@ -170,8 +170,8 @@ class SelectLocker extends Component {
             // alert('Locker No.3 Pressed');
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO4'){
-            Firebase.database().ref().update({
-                LockerStatus4: (this.state.stateNo4 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                L1 : (this.state.stateNo4 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton4 : this.state.titleButton4 == 0 ? 1 : 0,
@@ -179,8 +179,8 @@ class SelectLocker extends Component {
             // alert('Locker No.4 Pressed');
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO5'){
-            Firebase.database().ref().update({
-                LockerStatus5: (this.state.stateNo5 == 0 ?  1 : 0 )
+            Firebase.database().ref('LockerStatus/').update({
+                L2 : (this.state.stateNo5 == 0 ?  1 : 0 )
             });
             this.setState({
                 titleButton5 : this.state.titleButton5 == 0 ? 1 : 0,  
@@ -249,11 +249,11 @@ class SelectLocker extends Component {
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO4'){
             this.Bcolor1 = '#A020F0';
-            return 'LOCKER.L4 (Size L)' ;
+            return 'LOCKER.L1 (Size L)' ;
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO5'){
             this.Bcolor1 = '#A020F0';
-            return 'LOCKER.L5 (Size L)' ;
+            return 'LOCKER.L2 (Size L)' ;
         }
         else {
             //this.Bcolor1 = '#778899';
@@ -276,11 +276,11 @@ class SelectLocker extends Component {
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO4'){
             this.Bcolor2 = '#A020F0';
-            return 'LOCKER.L4 (Size L)' ;
+            return 'LOCKER.L1 (Size L)' ;
         }
         else if(this.state.booking_lockerNo2 === 'LOCKER_NO5'){
             this.Bcolor2 = '#A020F0';
-            return 'LOCKER.L5 (Size L)' ;
+            return 'LOCKER.L2 (Size L)' ;
         }
         else {
             return 'NO LOCKER'

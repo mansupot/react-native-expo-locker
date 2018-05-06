@@ -32,7 +32,7 @@ class IntroPage extends Component {
                         ROCK-IT LOCKER
                     </Text>
                     <Text style={{marginVertical : 5, color:'#778899'}}>
-                        Version 1.0.2 by TCT-RA #26
+                        Version 1.1(beta) by TCT-RA #26
                     </Text>
                 </View>
             );

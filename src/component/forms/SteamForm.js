@@ -16,33 +16,43 @@ import {
 // import VideoPlayer from 'react-native-video-controls';
 //import { Video } from 'expo';
 import AppLink from 'react-native-app-link';
+import Firebase from 'firebase';
 
 class SteamForm extends Component {
     constructor(props, context) {
         super(props, context)
+        this.ipStream = Firebase.database().ref().child('IPCamera/IPAddress');
         this.state = {
             ipStream : ''
         }
+    }
+    componentDidMount(){
+        this.ipStream.on('value',snap =>{
+            this.setState({
+                ipStream : snap.val()
+                
+            });
+        });
     }
     render() {
         return(
             <View style={styles.container}>
                 <Text style={styles.title}>Stream View</Text>
                 <View>
-                    <Text style = {{color : 'white' , fontWeight : 'bold'}}>Suggestion for Streamimg</Text>
-                    <Text style = {{color : 'white'}}>1.Install the VLC application in Play Store/App Store</Text>
-                    <Text style = {{color : 'white'}}>2.Enter the ip stream followed by the Port</Text>
-                    <Text style = {{color : 'white'}}>(Ex.192.168.1.1: 554)</Text>
-                    <Text style = {{color : 'white'}}>3.Press the Open to VLC App button</Text>
+                    <Text style = {{color : 'white' , fontWeight : 'bold' , fontSize : 16}}>Suggestion for Streamimg</Text>
+                    <Text style = {{color : 'white' , fontSize : 16}}>1.Install the VLC application in Play Store/App Store</Text>
+                    {/* <Text style = {{color : 'white'}}>2.Enter the ip stream followed by the Port</Text>
+                    <Text style = {{color : 'white'}}>(Ex.192.168.1.1: 554)</Text> */}
+                    <Text style = {{color : 'white' , fontSize : 16}}>2.Press the Open to VLC App button</Text>
                 </View>
-                <TextInput
+                {/* <TextInput
                     style={styles.textInput}
                     placeholder='IP stream'
-                    onChangeText={(ipStream) => this.setState({ipStream})}
-                />
+                    value={this.state.ipStream}
+                /> */}
                 <TouchableOpacity 
                     style={styles.button}
-                    onPress={() => Linking.openURL('rtsp://admin:admin@'+this.state.ipStream+'/live')}>
+                    onPress={() => Linking.openURL(this.state.ipStream)}>
                     <Text style={styles.buttonText}>Open to VLC App</Text>
                 </TouchableOpacity>
                 <Image
@@ -92,7 +102,7 @@ const styles = StyleSheet.create({
         padding : 10,
     },
     button: {
-        marginVertical : 25,
+        marginVertical : 30,
         backgroundColor : '#FF9900',
         borderRadius : 30,
         width : 220,
