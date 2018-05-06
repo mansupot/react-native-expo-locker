@@ -178,7 +178,7 @@ export default class BarcodeScannerExample extends React.Component {
         Actions.reset("tabbar");
     }
     
-    render() {
+    render() { //การแสดง User Interface ในหน้า Scan QR Code
         const { hasCameraPermission } = this.state;
     
         if (hasCameraPermission === null) {

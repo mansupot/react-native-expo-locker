@@ -17,7 +17,7 @@ class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // email: 'admin@hotmail.com' ,
+            // email: 'mobileapp@email.com' ,
             // password: '12345678',
             email: '' ,
             password: '',
@@ -35,7 +35,7 @@ class LoginForm extends Component {
     register() {
         Actions.register();
     }
-    onSubmit() {
+    onSubmit() { //ฟังชั่น Login ผ่าน Authentication ของ Firebase
         const { email ,password } = this.state;
         //Login Firebase
         Firebase.auth().signInWithEmailAndPassword(email, password)
@@ -47,7 +47,7 @@ class LoginForm extends Component {
                 alert("Email or Password are invalid. \n Please re-enter");
             });
     }
-    checkEmail(){
+    checkEmail(){ //ฟังชั่นตรวจสอบรูปแบบอีเมล
         if(!Validator.isEmail(this.state.email)) {
             this.setState({ errors: {...this.state.errors, email: 'Not email format' } });
         }
@@ -55,14 +55,13 @@ class LoginForm extends Component {
             this.setState({ errors: {...this.state.errors, email: '' } });
         }
     }
-    checkPassword(){
+    checkPassword(){ //ฟังชั่นตรวจสอบ
         if (this.state.password.length < 7 ) {
             this.setState({ errors: {...this.state.errors, password: 'More than 8 charactor' } });
         } 
         else {
             this.setState({ errors: {...this.state.errors, password: '' } });
         }
-    //console.log(this.state);
     }
 
     render() {
@@ -71,7 +70,7 @@ class LoginForm extends Component {
                 {/* <StatusBar hidden /> */}
                 <View style={{alignItems : 'center',justifyContent: 'center'}}> 
                     <Text style={styles.title}>
-                        ROCK-IT LOCKER
+                        Shop-IT Shoppere !
                     </Text>
                     <Text style={{marginVertical : 15, color:'#778899'}}>
                         Welcome to application by TCT (KMUTNB)
@@ -125,7 +124,7 @@ export default LoginForm;
 const styles = StyleSheet.create({
     container: {
         marginTop : 23,
-        backgroundColor : '#455a64' ,
+        backgroundColor : '#000033' ,
         justifyContent : 'center', 
         alignItems : 'center',
         flex : 1,
@@ -139,7 +138,7 @@ const styles = StyleSheet.create({
         height : 42 ,
         width : 300,
         backgroundColor : '#F8F8FF',
-        borderRadius : 20,
+        borderRadius : 7,
         marginVertical : 3,
         paddingLeft : 15,
         fontSize : 17,
@@ -153,8 +152,8 @@ const styles = StyleSheet.create({
     },
     button: {
         marginVertical : 25,
-        backgroundColor : '#4682B4',
-        borderRadius : 30,
+        backgroundColor : '#FF6600',
+        borderRadius : 10,
         width : 220,
         height : 50,
         alignItems : 'center',

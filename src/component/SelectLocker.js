@@ -90,7 +90,7 @@ class SelectLocker extends Component {
         });
     }
 
-    openAndClose_No1(){
+    openAndClose_No1(){ //ฟังชั่นการเปิด-ปิดของตู้ล็อกเกอร์
         if(this.state.booking_lockerNo1 === 'LOCKER_NO1'){
             Firebase.database().ref('LockerStatus/').update({
                 S1 : (this.state.stateNo1 == 0 ?  1 : 0 )
@@ -98,7 +98,6 @@ class SelectLocker extends Component {
             this.setState({
                 titleButton1 : this.state.titleButton1 == 0 ? 1 : 0,
             });
-            // alert('Locker No.1 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO2'){
             Firebase.database().ref('LockerStatus/').update({
@@ -107,7 +106,6 @@ class SelectLocker extends Component {
             this.setState({
                 titleButton2 : this.state.titleButton2 == 0 ? 1 : 0,
             });
-            // alert('Locker No.2 Pressed');
         }
         else if(this.state.booking_lockerNo1 === 'LOCKER_NO3'){
             Firebase.database().ref('LockerStatus/').update({
